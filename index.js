@@ -14,11 +14,11 @@ const redirect_uri = 'http://localhost:5000/callback'; // Your redirect uri
  * @param  {number} length The length of the string
  * @return {string} The generated string
  */
-var generateRandomString = function (length) {
+const generateRandomString = function (length) {
   var text = '';
   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-  for (var i = 0; i < length; i++) {
+  for (let i = 0; i < length; i++) {
     text += possible.charAt(Math.floor(Math.random() * possible.length));
   }
   return text;
@@ -31,6 +31,16 @@ var app = express();
 app.use(express.static(__dirname + '/public'))
    .use(cors())
    .use(cookieParser());
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  })
+} 
+
 
 app.get('/login', function (req, res) {
 
@@ -136,18 +146,6 @@ app.get('/refresh_token', function (req, res) {
 });
 
 
-// if (process.env.NODE_ENV === 'production') {
-//   app.use(express.static('client/build'));
-
-//   const path = require('path');
-//   app.get('*', (req, res) => {
-//     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-//   })
-// } else {
-//   app.use(express.static(__dirname + '/public'))
-//     .use(cors())
-//     .use(cookieParser());
-// }
 
 const PORT = process.env.PORT || 5000;
 
