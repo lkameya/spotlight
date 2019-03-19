@@ -135,6 +135,10 @@ app.get('/refresh_token', function(req, res) {
   });
 });
 
+app.get('/', (req, res) => {
+  res.send({ hi: 'there'});
+});
+
 const PORT = process.env.PORT || 8888;
 
 console.log('Listening on 5000');
