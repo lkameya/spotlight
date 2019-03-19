@@ -7,7 +7,7 @@ const config = require('./config/keys');
 
 const client_id = config.spotifyClientID; // Your client id
 const client_secret = config.spotifyClientSecret; // Your secret
-const redirect_uri = 'https://quiet-castle-21882.herokuapp.com/callback'; // Your redirect uri
+const redirect_uri = '/callback'; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
@@ -28,9 +28,9 @@ var stateKey = 'spotify_auth_state';
 
 var app = express();
 
-app.use(express.static(__dirname + '/public'))
-   .use(cors())
-   .use(cookieParser());
+// app.use(express.static(__dirname + '/public'))
+//    .use(cors())
+//    .use(cookieParser());
 
 app.get('/login', function(req, res) {
 
@@ -138,6 +138,15 @@ app.get('/refresh_token', function(req, res) {
 app.get('/', (req, res) => {
   res.send({ hi: 'there'});
 });
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  })
+}
 
 const PORT = process.env.PORT || 5000;
 
