@@ -7,7 +7,7 @@ const config = require('./config/keys');
 
 const client_id = config.spotifyClientID; // Your client id
 const client_secret = config.spotifyClientSecret; // Your secret
-const redirect_uri = 'https://quiet-castle-21882.herokuapp.com/callback'; // Your redirect uri
+const redirect_uri = 'https://quiet-castle-21882.herokuapp.com/api/callback'; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
@@ -29,20 +29,13 @@ var stateKey = 'spotify_auth_state';
 var app = express();
 
 app.use(express.static(__dirname + '/public'))
-   .use(cors())
-   .use(cookieParser());
+  .use(cors())
+  .use(cookieParser());
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-
-  const path = require('path');
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  })
-} 
+app.use(express.static('client/build'));
 
 
-app.get('/login', function (req, res) {
+app.get('/api/login', function (req, res) {
 
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
@@ -59,7 +52,7 @@ app.get('/login', function (req, res) {
     }));
 });
 
-app.get('/callback', function (req, res) {
+app.get('/api/callback', function (req, res) {
 
   // your application requests refresh and access tokens
   // after checking the state parameter
@@ -121,7 +114,7 @@ app.get('/callback', function (req, res) {
   }
 });
 
-app.get('/refresh_token', function (req, res) {
+app.get('/api/refresh_token', function (req, res) {
 
   // requesting access token from refresh token
   var refresh_token = req.query.refresh_token;
@@ -144,6 +137,11 @@ app.get('/refresh_token', function (req, res) {
     }
   });
 });
+
+const path = require('path');
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+})
 
 
 
