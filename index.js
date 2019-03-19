@@ -7,7 +7,7 @@ const config = require('./config/keys');
 
 const client_id = config.spotifyClientID; // Your client id
 const client_secret = config.spotifyClientSecret; // Your secret
-const redirect_uri = 'https://quiet-castle-21882.herokuapp.com/api/callback'; // Your redirect uri
+const redirect_uri = 'https://quiet-castle-21882.herokuapp.com'; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
