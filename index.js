@@ -7,14 +7,14 @@ const config = require('./config/keys');
 
 const client_id = config.spotifyClientID; // Your client id
 const client_secret = config.spotifyClientSecret; // Your secret
-const redirect_uri = '/callback'; // Your redirect uri
+const redirect_uri = 'http://localhost:5000/callback'; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
  * @param  {number} length The length of the string
  * @return {string} The generated string
  */
-var generateRandomString = function(length) {
+var generateRandomString = function (length) {
   var text = '';
   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
@@ -28,11 +28,11 @@ var stateKey = 'spotify_auth_state';
 
 var app = express();
 
-// app.use(express.static(__dirname + '/public'))
-//    .use(cors())
-//    .use(cookieParser());
+app.use(express.static(__dirname + '/public'))
+   .use(cors())
+   .use(cookieParser());
 
-app.get('/login', function(req, res) {
+app.get('/login', function (req, res) {
 
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
@@ -49,7 +49,7 @@ app.get('/login', function(req, res) {
     }));
 });
 
-app.get('/callback', function(req, res) {
+app.get('/callback', function (req, res) {
 
   // your application requests refresh and access tokens
   // after checking the state parameter
@@ -78,11 +78,11 @@ app.get('/callback', function(req, res) {
       json: true
     };
 
-    request.post(authOptions, function(error, response, body) {
+    request.post(authOptions, function (error, response, body) {
       if (!error && response.statusCode === 200) {
 
         var access_token = body.access_token,
-            refresh_token = body.refresh_token;
+          refresh_token = body.refresh_token;
 
         var options = {
           url: 'https://api.spotify.com/v1/me',
@@ -91,7 +91,7 @@ app.get('/callback', function(req, res) {
         };
 
         // use the access token to access the Spotify Web API
-        request.get(options, function(error, response, body) {
+        request.get(options, function (error, response, body) {
           console.log(body);
         });
 
@@ -111,7 +111,7 @@ app.get('/callback', function(req, res) {
   }
 });
 
-app.get('/refresh_token', function(req, res) {
+app.get('/refresh_token', function (req, res) {
 
   // requesting access token from refresh token
   var refresh_token = req.query.refresh_token;
@@ -125,7 +125,7 @@ app.get('/refresh_token', function(req, res) {
     json: true
   };
 
-  request.post(authOptions, function(error, response, body) {
+  request.post(authOptions, function (error, response, body) {
     if (!error && response.statusCode === 200) {
       var access_token = body.access_token;
       res.send({
@@ -135,18 +135,19 @@ app.get('/refresh_token', function(req, res) {
   });
 });
 
-app.get('/', (req, res) => {
-  res.send({ hi: 'there'});
-});
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static('client/build'));
 
-  const path = require('path');
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  })
-}
+//   const path = require('path');
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+//   })
+// } else {
+//   app.use(express.static(__dirname + '/public'))
+//     .use(cors())
+//     .use(cookieParser());
+// }
 
 const PORT = process.env.PORT || 5000;
 
