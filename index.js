@@ -28,11 +28,13 @@ var stateKey = 'spotify_auth_state';
 
 var app = express();
 
-// app.use(express.static(__dirname + '/public'))
-//   .use(cors())
-//   .use(cookieParser());
+// // app.use(express.static(__dirname + '/public'))
+//    .use(cors())
+//    .use(cookieParser());
 
-app.use(express.static('client/build'));
+app.use(express.static('client/build'))
+  .use(cors())
+  .use(cookieParser());;
 
 
 app.get('/api/login', function (req, res) {
