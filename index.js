@@ -7,7 +7,7 @@ const config = require('./config/keys');
 
 const client_id = config.spotifyClientID; // Your client id
 const client_secret = config.spotifyClientSecret; // Your secret
-const redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
+const redirect_uri = 'https://quiet-castle-21882.herokuapp.com/callback'; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
@@ -139,7 +139,7 @@ app.get('/', (req, res) => {
   res.send({ hi: 'there'});
 });
 
-const PORT = process.env.PORT || 8888;
+const PORT = process.env.PORT || 5000;
 
 console.log('Listening on 5000');
-app.listen(8888);
+app.listen(5000);
