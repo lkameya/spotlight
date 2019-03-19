@@ -61,6 +61,9 @@ app.get('/api/callback', function (req, res) {
   var state = req.query.state || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
 
+  console.log("CODE" + code);
+  console.log("STATE" + state);
+
   if (state === null || state !== storedState) {
     res.redirect('/#' +
       querystring.stringify({
