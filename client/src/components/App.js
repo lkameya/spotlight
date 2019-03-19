@@ -19,6 +19,7 @@ class App extends Component {
   }
 
   getHashParams() {
+    console.log('getHashParams');
     var hashParams = {};
     var e, r = /([^&;=]+)=?([^&;]*)/g,
       q = window.location.hash.substring(1);
