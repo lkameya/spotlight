@@ -65,14 +65,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <a href='https://quiet-castle-21882.herokuapp.com/api/login' > Login to Spotify </a>
+        <a href='http://localhost:5000/api/login' > Login to Spotify </a>
         {this.nowPlaying()}
 
         {this.state.loggedIn &&
           <button onClick={() => this.getNowPlaying()}>
             Check Now Playing
             </button>
-
         }
         <button onClick={() => this.getListOfSongs()}>
           Get List of songs
