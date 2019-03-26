@@ -1,0 +1,1 @@
+export const FETCH_CURRENT_SONG = 'FETCH_CURRENT_SONG';

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getCurrentSong } from '../actions';
 import SpotifyWebApi from 'spotify-web-api-js';
 import SearchBar from '../components/SearchBar/SearchBar';
 import SearchList from '../components/SearchList/SearchList';
 import Playlist from '../containers/Playlist/Playlist';
 import _ from 'lodash';
 import styles from './App.module.css';
+import * as songsActions from '../store/actions/index';
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -17,9 +17,6 @@ class App extends Component {
     super();
     const params = this.getHashParams();
     const token = params.access_token;
-    const user_id = params.user_id;
-
-    console.log(params);
 
     if (token) {
       spotifyApi.setAccessToken(token);
@@ -30,6 +27,16 @@ class App extends Component {
       songs: [],
       playlist: []
     }
+  }
+
+  componentDidMount = async () => {
+    const playlists = await spotifyApi.getUserPlaylists();
+    const playlistId = playlists.items[0].id;
+    const tracks = await spotifyApi.getPlaylistTracks(playlistId);
+    const songs = tracks.items.map(song => song.track);
+    this.setState({
+      playlist: songs
+    })
   }
 
   getHashParams() {
@@ -44,10 +51,6 @@ class App extends Component {
     return hashParams;
   }
 
-  getNowPlaying() {
-    this.props.getCurrentSong();
-  }
-
   searchTracks = term => {
     if (this.prev !== null) {
       this.prev.abort();
@@ -56,8 +59,6 @@ class App extends Component {
     this.prev = spotifyApi.searchTracks(term, { limit: 5 });
     this.prev.then(data => {
       this.prev = null;
-
-      console.log(data.tracks);
       this.setState({
         songs: data.tracks.items
       });
@@ -65,11 +66,11 @@ class App extends Component {
   }
 
   nowPlaying = () => {
-    const currentSong = this.props.songs;
-    if (currentSong) {
+    const currentSong = this.props.currentSong;
+    if (!_.isEmpty(currentSong)) {
       return (
         <>
-          <div> Now Playing: {currentSong.name} </div>
+          <div> {currentSong.artists[0].name} - {currentSong.name} </div>
         </>
       )
     } else {
@@ -78,9 +79,8 @@ class App extends Component {
   }
 
   addSongToPlaylist = async song => {
-    console.log(song);
     this.setState({
-      playlist: [...this.state.playlist, song]
+      playlist: [song, ...this.state.playlist]
     })
 
     const playlists = await spotifyApi.getUserPlaylists();
@@ -88,7 +88,6 @@ class App extends Component {
   }
 
   playSong = async song =>  {
-    console.log(song);
     const playlists = await spotifyApi.getUserPlaylists();
     spotifyApi.addTracksToPlaylist(playlists.items[0].id, [song.uri]);
   }
@@ -109,16 +108,17 @@ class App extends Component {
         />
         <Playlist playlist={this.state.playlist} playSong={this.playSong}/>
         <a href='http://localhost:5000/api/login' > Login to Spotify </a>
-        {this.nowPlaying()}
 
+        {this.nowPlaying()}
         {this.state.loggedIn &&
-          <button onClick={() => this.getNowPlaying()}>
+          <button onClick={this.props.onFetchCurrentSong}>
             Check Now Playing
             </button>
         }
         <button onClick={() => this.getListOfSongs()}>
           Skip next
             </button>
+
       </div>
     );
   }
@@ -126,10 +126,17 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    songs: state.songs
+    currentSong: state.currentSong
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onFetchCurrentSong: () => dispatch(songsActions.fetchCurrentSong())
   }
 }
 
 export default connect(
   mapStateToProps,
-  { getCurrentSong })(App);
+  mapDispatchToProps
+)(App);

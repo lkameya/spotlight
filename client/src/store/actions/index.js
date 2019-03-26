@@ -1,0 +1,3 @@
+export {
+  fetchCurrentSong
+} from './songs';
