@@ -38,12 +38,11 @@ app.use(express.static('client/build'))
 
 
 app.get('/api/login', function (req, res) {
-  console.log('passei aqui');
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
 
   // your application requests authorization
-  var scope = 'user-read-private user-read-email user-read-playback-state';
+  var scope = 'user-read-private user-read-email user-read-playback-state playlist-modify-private playlist-modify-public user-modify-playback-state';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -98,16 +97,19 @@ app.get('/api/callback', function (req, res) {
           json: true
         };
 
+        var teste = null;
         // use the access token to access the Spotify Web API
         request.get(options, function (error, response, body) {
-          console.log(body);
+          console.log(body.id);
+          teste = body.id;
         });
 
         // we can also pass the token to the browser to make requests from there
         res.redirect('http://localhost:3000/#' +
           querystring.stringify({
             access_token: access_token,
-            refresh_token: refresh_token
+            refresh_token: refresh_token,
+            user_id: teste
           }));
       } else {
         res.redirect('/#' +
@@ -142,6 +144,8 @@ app.get('/api/refresh_token', function (req, res) {
     }
   });
 });
+
+
 
 const path = require('path');
 app.get('*', (req, res) => {
