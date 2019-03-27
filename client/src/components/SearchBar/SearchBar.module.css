@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   color: #191414;
+
 }
 
 .input {
@@ -14,14 +15,14 @@
   border: none;
   padding: .7rem 2rem;
   border-radius: 100px;
-  width: 50%;
+  width: 40%;
   transition: all .2s;
   margin-right: -3.25rem;
 }
 
 .input:focus {
   outline: none;
-  width: 60%;
+  width: 50%;
   background-color: #f0eeee;
 }
 
@@ -37,4 +38,6 @@
 .searchBar {
   display: flex;
   justify-content: center;
+  align-items: center;
+  margin-top: 180px;
 }

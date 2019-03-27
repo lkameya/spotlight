@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './SearchBar.module.css';
+import SearchButton from '../Icons/SearchButton/SearchButton';
 
 const SearchBar = props => {
   const [term, setTerm] = useState('');
@@ -15,9 +16,10 @@ const SearchBar = props => {
         type="text"
         className={styles.input}
         value={term}
-        placeholder="Search a song"
+        placeholder="Search an artist or song ..."
         onChange={event => onInputChange(event.target.value)}
       />
+      <SearchButton />
     </div>
 
   )

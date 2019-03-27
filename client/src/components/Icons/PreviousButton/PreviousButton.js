@@ -4,7 +4,7 @@ import styles from './PreviousButton.module.css';
 const PreviousButton = props => (
   <div onClick={props.clickPrevious}>
     <svg width="30px" height="29px" viewBox="0 0 30 29">
-      <title>Group Copy</title>
+      <title>Previous</title>
       <desc>Created with Sketch.</desc>
       <g id="Description" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g className={styles.previousButton} id="Group-Copy" transform="translate(15.000000, 14.500000) rotate(-180.000000) translate(-15.000000, -14.500000) " fill="#FFFFFF">

@@ -77,21 +77,21 @@ class App extends Component {
     const currentDiv = document.getElementById(this.props.currentSong.id);
 
     this.props.playlist.map(item => {
-       if(item.id !== this.props.currentSong.id) {
+      if (item.id !== this.props.currentSong.id) {
         const node = document.getElementById(item.id);
-        if(node)
+        if (node)
           node.classList.remove(styles.bounce);
       }
       return true;
     });
 
-    if(currentDiv) {
+    if (currentDiv) {
       currentDiv.classList.add(styles.bounce);
       // currentDiv.style.outline = "1px dotted #1DB954";
-    } 
-      
+    }
 
-    if(this.state.loggedIn) {
+
+    if (this.state.loggedIn) {
       return (
         <div className={styles.app}>
           <SearchBar handleSearch={trackSearch} />
@@ -99,12 +99,13 @@ class App extends Component {
             songs={this.props.searchList}
             addToPlay={this.props.onAddSongToPlaylist}
           />
-         
           <div className={styles.nowPlaying}>{this.nowPlaying()}</div>
-          <div className={styles.buttons}>
-            <PreviousButton clickPrevious={this.props.onPreviousSong} />
-            <PlayButton clickPrevious={this.props.onPreviousSong} />
-            <NextButton clickNext={this.props.onNextSong}/>
+          <div className={styles.row}>
+            <div className={styles.buttons}>
+              <PreviousButton clickPrevious={this.props.onPreviousSong} />
+              <PlayButton clickPrevious={this.props.onPreviousSong} />
+              <NextButton clickNext={this.props.onNextSong} />
+            </div>
           </div>
           <Playlist playlist={this.props.playlist} playSong={this.playSong} />
         </div>
@@ -112,7 +113,15 @@ class App extends Component {
     }
 
     return (
-      <a href='http://localhost:5000/api/login' > Login to Spotify </a>
+      <div className={styles.loginScreen}>
+        <p>Welcome to my custom playlist. 
+          In order to make this app work properly, you need to create a new playlist on your Spotify Account
+          and start playing any song.
+        </p>
+        <br />
+        <div>After listening to your music click on the button below to start using the playlist.</div>
+        <a className={styles.loginButton} href='http://localhost:5000/api/login' > Connect to Spotify </a>
+      </div>
     )
 
   }
