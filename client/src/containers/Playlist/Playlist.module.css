@@ -1,4 +1,9 @@
 .playlist {
   display: flex;
-  
+  flex-wrap: nowrap;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  bottom: 50px;
+
 }

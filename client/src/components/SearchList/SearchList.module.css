@@ -1,0 +1,38 @@
+.searchList {
+  height: 200px;
+
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  font-size: 12px;
+  margin-top: 50px;
+}
+
+.listItem {
+  margin: 10px 5px;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 150px;
+  text-align: center;
+}
+
+.track:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: .2s all;
+}
+.track:active {
+  transform: translateY(-10px);
+}
+
+.albumImage {
+  border-radius: 150px;
+  margin-bottom: 5px;
+}

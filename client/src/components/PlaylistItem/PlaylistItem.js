@@ -3,12 +3,9 @@ import styles from './PlaylistItem.module.css';
 
 const PlaylistItem = props => (
   <>
-    <div className={styles.albumImage}>
+    <div className={styles.albumImage} id={props.id}>
       <img src={props.albumImg} alt="albumimg" className={styles.albumImage} height={100}/>
     </div>
-    <div>{props.title}</div>
-    <div>{props.artist}</div>
-    {/* <button onClick={props.playNow}>Play</button> */}
   </>
 )
 

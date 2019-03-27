@@ -3,12 +3,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #191414;
 }
 
 .input {
   font-family: inherit;
   font-size: inherit;
-  color: inherit;
+  color: #191414;
   background-color: #f4f2f2;
   border: none;
   padding: .7rem 2rem;
@@ -31,4 +32,9 @@
 
 .input:focus + .button {
   background-color: #f0eeee;
+}
+
+.searchBar {
+  display: flex;
+  justify-content: center;
 }

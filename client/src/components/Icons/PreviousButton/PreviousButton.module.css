@@ -1,0 +1,5 @@
+.previousButton:hover {
+  fill: #1DB954;
+  cursor: pointer;
+  transition: all .1s;
+}

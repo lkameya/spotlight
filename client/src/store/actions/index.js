@@ -1,3 +1,8 @@
 export {
-  fetchCurrentSong
-} from './songs';
+  fetchCurrentSong,
+  fetchSongsFromPlaylist,
+  searchSong,
+  addSongToPlaylist,
+  skipNext,
+  skipPrevious
+} from './spotifyActions';

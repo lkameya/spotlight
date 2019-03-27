@@ -10,13 +10,16 @@ const SearchBar = props => {
   }
 
   return (
-    <input
-      type="text"
-      className={styles.input}
-      value={term}
-      placeholder="Search a song"
-      onChange={event => onInputChange(event.target.value)}
-    />
+    <div className={styles.searchBar}>
+      <input
+        type="text"
+        className={styles.input}
+        value={term}
+        placeholder="Search a song"
+        onChange={event => onInputChange(event.target.value)}
+      />
+    </div>
+
   )
 }
 
