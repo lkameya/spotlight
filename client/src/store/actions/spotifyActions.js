@@ -67,5 +67,14 @@ export const skipPrevious = () => {
   }
 }
 
+export const togglePlay = playing => {
+  return async dispatch => {
+    if(playing)
+      spotifyApi.pause();
+    else
+      spotifyApi.play();
+  }
+}
+
 
 

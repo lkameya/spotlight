@@ -4,5 +4,6 @@ export {
   searchSong,
   addSongToPlaylist,
   skipNext,
-  skipPrevious
+  skipPrevious,
+  togglePlay
 } from './spotifyActions';

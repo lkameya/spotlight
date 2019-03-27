@@ -23,13 +23,17 @@ class App extends Component {
       spotifyApi.setAccessToken(token);
     }
     this.state = {
-      loggedIn: token ? true : false
+      loggedIn: token ? true : false,
+      isPlaying: true
     }
   }
 
   componentDidMount = () => {
     this.props.onFetchUserPlaylist();
-    this.timer = setInterval(() => this.props.onFetchCurrentSong(), 5000);
+    this.timer = setInterval(() => {
+      this.props.onFetchCurrentSong()
+      this.playSong();
+    }, 3000);
   }
 
 
@@ -59,17 +63,12 @@ class App extends Component {
   }
 
   playSong = async song => {
-    const playlists = await spotifyApi.getUserPlaylists();
-    spotifyApi.addTracksToPlaylist(playlists.items[0].id, [song.uri]);
-  }
-
-  getListOfSongs = () => {
-    spotifyApi.skipToNext();
-  }
-
-  getPrevious = () => {
-    spotifyApi.skipToPrevious();
-    console.log(this.props.playlist.find(item => item.id === this.props.currentSong.id));
+    const response = await spotifyApi.getMyCurrentPlaybackState();
+    if(response.is_playing) {
+      this.setState({ isPlaying: true });
+    } else {
+      this.setState({ isPlaying: false });
+    }
   }
 
   render() {
@@ -103,7 +102,7 @@ class App extends Component {
           <div className={styles.row}>
             <div className={styles.buttons}>
               <PreviousButton clickPrevious={this.props.onPreviousSong} />
-              <PlayButton clickPrevious={this.props.onPreviousSong} />
+              <PlayButton clickPrevious={this.props.onPreviousSong} isPlaying={this.state.isPlaying} playSong={() => this.props.onTogglePlay(this.state.isPlaying)}/>
               <NextButton clickNext={this.props.onNextSong} />
             </div>
           </div>
@@ -115,12 +114,12 @@ class App extends Component {
     return (
       <div className={styles.loginScreen}>
         <p>Welcome to my custom playlist. 
-          In order to make this app work properly, you need to create a new playlist on your Spotify Account
-          and start playing any song.
+          In order to make this app work properly, you need to create a new playlist in your Spotify Account
+          and start playing a song.
         </p>
         <br />
-        <div>After listening to your music click on the button below to start using the playlist.</div>
-        {/* <a className={styles.loginButton} href='http://localhost:5000/api/login' > Connect to Spotify </a */}
+        <div>After listening to your music click on the button below to start using the app.</div>
+        {/* <a className={styles.loginButton} href='http://localhost:5000/api/login' > Connect to Spotify </a> */}
         <a className={styles.loginButton} href='https://quiet-castle-21882.herokuapp.com/api/login' > Connect to Spotify </a>
       </div>
     )
@@ -144,7 +143,8 @@ const mapDispatchToProps = dispatch => {
     onSearchSongs: (term) => dispatch(actions.searchSong(term)),
     onAddSongToPlaylist: (song) => dispatch(actions.addSongToPlaylist(song)),
     onNextSong: () => dispatch(actions.skipNext()),
-    onPreviousSong: () => dispatch(actions.skipPrevious())
+    onPreviousSong: () => dispatch(actions.skipPrevious()),
+    onTogglePlay: (playing) => dispatch(actions.togglePlay(playing))
   }
 }
 
