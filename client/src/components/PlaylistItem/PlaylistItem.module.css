@@ -2,3 +2,26 @@
   border-radius: 100px;
   margin: 10px 5px;
 }
+
+.labelTrack {
+  opacity: 0;
+  font-size: 12px;
+  font-weight: 300;
+  position: absolute;
+  top: -5px;
+  left: 5%;
+  transform: translateX(-50%);
+}
+
+.albumImage:hover + .labelTrack {
+  opacity: 1;
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translate(-50%);
+  transition: all .2s;
+}
+
+.playlistItem {
+  position: relative;
+}

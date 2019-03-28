@@ -1,6 +1,7 @@
 .playlist {
   display: flex;
-  overflow-x: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
   justify-content: center;
   width: 100vw;
   position: absolute;

@@ -119,8 +119,8 @@ class App extends Component {
         </p>
         <br />
         <div>After listening to your music click on the button below to start using the app.</div>
-        {/* <a className={styles.loginButton} href='http://localhost:5000/api/login' > Connect to Spotify </a> */}
-        <a className={styles.loginButton} href='https://quiet-castle-21882.herokuapp.com/api/login' > Connect to Spotify </a>
+        <a className={styles.loginButton} href='http://localhost:5000/api/login' > Connect to Spotify </a>
+        {/* <a className={styles.loginButton} href='https://quiet-castle-21882.herokuapp.com/api/login' > Connect to Spotify </a> */}
       </div>
     )
 
