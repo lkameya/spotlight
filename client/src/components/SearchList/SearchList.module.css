@@ -37,11 +37,12 @@
   height: 8rem;
 }
 
-@media (max-width: 37.5em) {  
+@media only screen and (max-width: 37.5em) {  
   .list {
     flex-wrap: wrap;
   }
   .albumImage {
     height: 6rem;
   }
-}  
+}
+
