@@ -49,8 +49,9 @@
   flex-wrap: wrap;
   justify-content: center;
   position: absolute;
-  bottom: 20vh;
+  bottom: 2vh;
   width: 100%;
+  background-color: #141919;
 }
 
 .loginButton {

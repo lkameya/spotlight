@@ -24,7 +24,8 @@ class App extends Component {
     }
     this.state = {
       loggedIn: token ? true : false,
-      isPlaying: true
+      isPlaying: true,
+      colors: ['rgb(200, 50, 20)', 'red']
     }
   }
 
@@ -34,6 +35,8 @@ class App extends Component {
       this.props.onFetchCurrentSong()
       this.playSong();
     }, 3000);
+
+    // document.body.style.backgroundImage = "radial-gradient(circle farthest-corner at 50% -70.6%,  rgb(200, 163, 200) -0%, rgb(7, 2, 7) 100.2%)";
   }
 
 
@@ -106,8 +109,8 @@ class App extends Component {
               <PlayButton clickPrevious={this.props.onPreviousSong} isPlaying={this.state.isPlaying} playSong={() => this.props.onTogglePlay(this.state.isPlaying)} />
               <NextButton clickNext={this.props.onNextSong} />
             </div>
+            <Playlist playlist={this.props.playlist} playSong={this.playSong} />
           </div>
-          <Playlist playlist={this.props.playlist} playSong={this.playSong} />
         </div>
       );
     }
@@ -120,8 +123,8 @@ class App extends Component {
         </p>
         <br />
         <div>After listening to your music click on the button below to start using the app.</div>
-        {/* <a className={styles.loginButton} href='http://localhost:5000/api/login' > Connect to Spotify </a> */}
-        <a className={styles.loginButton} href='https://quiet-castle-21882.herokuapp.com/api/login' > Connect to Spotify </a>
+        <a className={styles.loginButton} href='http://localhost:5000/api/login' > Connect to Spotify </a>
+        {/* <a className={styles.loginButton} href='https://quiet-castle-21882.herokuapp.com/api/login' > Connect to Spotify </a> */}
       </div>
     )
   }
