@@ -121,7 +121,7 @@ class App extends Component {
 
     return (
       <div className={styles.loginScreen}>
-        <div>Please make sure you are running Spotify in background on any device.</div>
+        <div>Please make sure you are playing one of your playlists in Spotify on any device.</div>
         {/* <a className={styles.loginButton} href='http://localhost:5000/api/login' > Continue </a> */}
         <a className={styles.loginButton} href='https://quiet-castle-21882.herokuapp.com/api/login' > Continue </a>
       </div>

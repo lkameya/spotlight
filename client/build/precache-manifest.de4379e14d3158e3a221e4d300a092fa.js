@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "affa90ba326bf18e67fd",
-    "url": "/static/css/main.4f1310b1.chunk.css"
+    "revision": "3c78c0399a45594a5857",
+    "url": "/static/css/main.60c1172b.chunk.css"
   },
   {
-    "revision": "affa90ba326bf18e67fd",
-    "url": "/static/js/main.8085ef32.chunk.js"
+    "revision": "3c78c0399a45594a5857",
+    "url": "/static/js/main.6c3e5de0.chunk.js"
   },
   {
     "revision": "42ac5946195a7306e2a5",
@@ -60,12 +60,12 @@ self.__precacheManifest = [
     "url": "/static/media/roboto-latin-300italic.d69924b9.woff2"
   },
   {
-    "revision": "a1471d1d6431c893582a5f6a250db3f9",
-    "url": "/static/media/roboto-latin-300.a1471d1d.woff"
-  },
-  {
     "revision": "210a7c781f5a354a0e4985656ab456d9",
     "url": "/static/media/roboto-latin-300italic.210a7c78.woff"
+  },
+  {
+    "revision": "a1471d1d6431c893582a5f6a250db3f9",
+    "url": "/static/media/roboto-latin-300.a1471d1d.woff"
   },
   {
     "revision": "bafb105baeb22d965c70fe52ba6b49d9",
@@ -92,20 +92,20 @@ self.__precacheManifest = [
     "url": "/static/media/roboto-latin-500italic.ffcc050b.woff"
   },
   {
-    "revision": "cf6613d1adf490972c557a8e318e0868",
-    "url": "/static/media/roboto-latin-700.cf6613d1.woff"
+    "revision": "846d1890aee87fde5d8ced8eba360c3a",
+    "url": "/static/media/roboto-latin-700italic.846d1890.woff"
   },
   {
     "revision": "010c1aeee3c6d1cbb1d5761d80353823",
     "url": "/static/media/roboto-latin-700italic.010c1aee.woff2"
   },
   {
-    "revision": "8c2ade503b34e31430d6c98aa29a52a3",
-    "url": "/static/media/roboto-latin-900.8c2ade50.woff"
+    "revision": "cf6613d1adf490972c557a8e318e0868",
+    "url": "/static/media/roboto-latin-700.cf6613d1.woff"
   },
   {
-    "revision": "846d1890aee87fde5d8ced8eba360c3a",
-    "url": "/static/media/roboto-latin-700italic.846d1890.woff"
+    "revision": "8c2ade503b34e31430d6c98aa29a52a3",
+    "url": "/static/media/roboto-latin-900.8c2ade50.woff"
   },
   {
     "revision": "7b770d6c53423deb1a8e49d3c9175184",
@@ -116,7 +116,7 @@ self.__precacheManifest = [
     "url": "/static/media/roboto-latin-900italic.bc833e72.woff"
   },
   {
-    "revision": "7fc5007e92463a68de5a3cb22e127373",
+    "revision": "47adc3c491dd6eb55087e28f7c0ffc02",
     "url": "/index.html"
   }
 ];

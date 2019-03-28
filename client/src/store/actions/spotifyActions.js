@@ -24,11 +24,18 @@ export const fetchCurrentSong = () => {
 export const fetchSongsFromPlaylist = () => {
   return async dispatch => {
     try{
-      const playlists = await spotifyApi.getUserPlaylists();
-      const playlistId = playlists.items[0].id;
+      // const playlists = await spotifyApi.getUserPlaylists();
+      // const playlistId = playlists.items[0].id;
+      // const tracks = await spotifyApi.getPlaylistTracks(playlistId);
+      // const songs = tracks.items.map(song => song.track);
+
+      const track = await spotifyApi.getMyCurrentPlayingTrack();
+      const info = track.context.uri.split(':');
+      const playlistId = info[info.length - 1];
+
       const tracks = await spotifyApi.getPlaylistTracks(playlistId);
       const songs = tracks.items.map(song => song.track);
-
+      
       dispatch({ type:  actionTypes.FETCH_SONGS_FROM_PLAYLIST, songs, playlistId });
     } catch(error) {  
       dispatch({ type: 'FETCH_ERROR', error });
