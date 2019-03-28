@@ -119,7 +119,7 @@ class App extends Component {
       );
     }
 
-    return history.push('/api/login');
+    return window.location.href = "https://quiet-castle-21882.herokuapp.com/api/login";
 
     // return (
     //   // <div className={styles.loginScreen}>
