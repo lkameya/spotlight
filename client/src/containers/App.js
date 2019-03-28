@@ -123,14 +123,9 @@ class App extends Component {
 
     return (
       <div className={styles.loginScreen}>
-        <p>Welcome to my custom playlist.
-          In order to make this app work properly, you need to create a new playlist in your Spotify Account
-          and start playing a song.
-        </p>
-        <br />
-        <div>After listening to your music click on the button below to start using the app.</div>
+        <div>Please make sure you are running Spotify in background on any device.</div>
         {/* <a className={styles.loginButton} href='http://localhost:5000/api/login' > Connect to Spotify </a> */}
-        <a className={styles.loginButton} href='https://quiet-castle-21882.herokuapp.com/api/login' > Connect to Spotify </a>
+        <a className={styles.loginButton} href='https://quiet-castle-21882.herokuapp.com/api/login' > Continue </a>
       </div>
     )
   }
