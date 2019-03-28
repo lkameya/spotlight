@@ -7,7 +7,7 @@ const SearchList = props => (
       {props.songs.map(song => {
         return (
           <div className={styles.track} onClick={() => props.addToPlay(song)}>
-            <img src={song.album.images[1].url} alt="albumimg" className={styles.albumImage} height={70} />
+            <img src={song.album.images[1].url} alt="albumimg" className={styles.albumImage} />
             <li
               className={styles.listItem}
               key={song.id}

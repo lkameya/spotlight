@@ -64,7 +64,7 @@ class App extends Component {
 
   playSong = async song => {
     const response = await spotifyApi.getMyCurrentPlaybackState();
-    if(response.is_playing) {
+    if (response.is_playing) {
       this.setState({ isPlaying: true });
     } else {
       this.setState({ isPlaying: false });
@@ -73,22 +73,23 @@ class App extends Component {
 
   render() {
     const trackSearch = _.debounce((term) => { this.props.onSearchSongs(term) }, 500);
-    const currentDiv = document.getElementById(this.props.currentSong.id);
+    let currentDiv = null;
+    
+    if(this.props.currentSong) {
+      currentDiv = document.getElementById(this.props.currentSong.id);
 
-    this.props.playlist.map(item => {
-      if (item.id !== this.props.currentSong.id) {
-        const node = document.getElementById(item.id);
-        if (node)
-          node.classList.remove(styles.bounce);
-      }
-      return true;
-    });
-
-    if (currentDiv) {
-      currentDiv.classList.add(styles.bounce);
-      // currentDiv.style.outline = "1px dotted #1DB954";
+      this.props.playlist.map(item => {
+        if (item.id !== this.props.currentSong.id) {
+          const node = document.getElementById(item.id);
+          if (node)
+            node.classList.remove(styles.bounce);
+        }
+        return true;
+      });
+  
+      if(currentDiv)
+        currentDiv.classList.add(styles.bounce);
     }
-
 
     if (this.state.loggedIn) {
       return (
@@ -98,11 +99,11 @@ class App extends Component {
             songs={this.props.searchList}
             addToPlay={this.props.onAddSongToPlaylist}
           />
-          <div className={styles.nowPlaying}>{this.nowPlaying()}</div>
           <div className={styles.row}>
+            <div className={styles.nowPlaying}>{this.nowPlaying()}</div>
             <div className={styles.buttons}>
               <PreviousButton clickPrevious={this.props.onPreviousSong} />
-              <PlayButton clickPrevious={this.props.onPreviousSong} isPlaying={this.state.isPlaying} playSong={() => this.props.onTogglePlay(this.state.isPlaying)}/>
+              <PlayButton clickPrevious={this.props.onPreviousSong} isPlaying={this.state.isPlaying} playSong={() => this.props.onTogglePlay(this.state.isPlaying)} />
               <NextButton clickNext={this.props.onNextSong} />
             </div>
           </div>
@@ -113,7 +114,7 @@ class App extends Component {
 
     return (
       <div className={styles.loginScreen}>
-        <p>Welcome to my custom playlist. 
+        <p>Welcome to my custom playlist.
           In order to make this app work properly, you need to create a new playlist in your Spotify Account
           and start playing a song.
         </p>
