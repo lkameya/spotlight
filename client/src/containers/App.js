@@ -74,8 +74,8 @@ class App extends Component {
   render() {
     const trackSearch = _.debounce((term) => { this.props.onSearchSongs(term) }, 500);
     let currentDiv = null;
-    
-    if(this.props.currentSong) {
+
+    if (this.props.currentSong) {
       currentDiv = document.getElementById(this.props.currentSong.id);
 
       this.props.playlist.map(item => {
@@ -86,8 +86,8 @@ class App extends Component {
         }
         return true;
       });
-  
-      if(currentDiv)
+
+      if (currentDiv)
         currentDiv.classList.add(styles.bounce);
     }
 
@@ -106,8 +106,8 @@ class App extends Component {
               <PlayButton clickPrevious={this.props.onPreviousSong} isPlaying={this.state.isPlaying} playSong={() => this.props.onTogglePlay(this.state.isPlaying)} />
               <NextButton clickNext={this.props.onNextSong} />
             </div>
+            <Playlist playlist={this.props.playlist} playSong={this.playSong} />
           </div>
-          <Playlist playlist={this.props.playlist} playSong={this.playSong} />
         </div>
       );
     }
