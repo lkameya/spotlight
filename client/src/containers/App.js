@@ -106,8 +106,8 @@ class App extends Component {
               <PlayButton clickPrevious={this.props.onPreviousSong} isPlaying={this.state.isPlaying} playSong={() => this.props.onTogglePlay(this.state.isPlaying)} />
               <NextButton clickNext={this.props.onNextSong} />
             </div>
-            <Playlist playlist={this.props.playlist} playSong={this.playSong} />
           </div>
+          <Playlist playlist={this.props.playlist} playSong={this.playSong} />
         </div>
       );
     }
