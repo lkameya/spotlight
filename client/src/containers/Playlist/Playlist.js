@@ -6,7 +6,7 @@ class Playlist extends Component {
   render() {
     if(this.props.playlist) {
       return (
-        <div className={styles.playlist} id="playlist">
+        <div className={styles.playlist} >
           {this.props.playlist.map(song => {
             return (
               <PlaylistItem
