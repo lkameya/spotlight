@@ -31,24 +31,22 @@
   .albumImage {
     height: 8rem;
   }
-
-};    
+}    
         
 @media only screen and (max-width: 56.25em) { 
   .albumImage {
     height: 8rem;
   }
-};    
+} 
 
 @media only screen and (max-width: 75em) { 
   .albumImage {
     height: 9rem;
   }
-
-};   
+} 
 
 @media only screen and (min-width: 112.5em) {  
   .albumImage {
     height: 10rem;
   }
-};
+}
