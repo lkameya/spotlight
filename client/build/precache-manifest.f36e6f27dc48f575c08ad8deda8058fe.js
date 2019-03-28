@@ -1,23 +1,23 @@
 self.__precacheManifest = [
   {
-    "revision": "2ba5e4a9c14ba5210755",
-    "url": "/static/css/main.90546c9e.chunk.css"
+    "revision": "cebbd5272796cbe96463",
+    "url": "/static/css/main.7dfce3a2.chunk.css"
   },
   {
-    "revision": "2ba5e4a9c14ba5210755",
-    "url": "/static/js/main.0b78fb42.chunk.js"
+    "revision": "cebbd5272796cbe96463",
+    "url": "/static/js/main.1a5990bd.chunk.js"
   },
   {
     "revision": "42ac5946195a7306e2a5",
     "url": "/static/js/runtime~main.a8a9905a.js"
   },
   {
-    "revision": "7603f72b68b76e9ecae4",
+    "revision": "60c048d1a0bf4d968809",
     "url": "/static/css/2.45c9ae20.chunk.css"
   },
   {
-    "revision": "7603f72b68b76e9ecae4",
-    "url": "/static/js/2.cb92d2c3.chunk.js"
+    "revision": "60c048d1a0bf4d968809",
+    "url": "/static/js/2.99f53934.chunk.js"
   },
   {
     "revision": "987b84570ea69ee660455b8d5e91f5f1",
@@ -68,12 +68,12 @@ self.__precacheManifest = [
     "url": "/static/media/roboto-latin-300italic.210a7c78.woff"
   },
   {
-    "revision": "bafb105baeb22d965c70fe52ba6b49d9",
-    "url": "/static/media/roboto-latin-400.bafb105b.woff"
-  },
-  {
     "revision": "d8bcbe724fd6f4ba44d0ee6a2675890f",
     "url": "/static/media/roboto-latin-400italic.d8bcbe72.woff2"
+  },
+  {
+    "revision": "bafb105baeb22d965c70fe52ba6b49d9",
+    "url": "/static/media/roboto-latin-400.bafb105b.woff"
   },
   {
     "revision": "9680d5a0c32d2fd084e07bbc4c8b2923",
@@ -104,19 +104,19 @@ self.__precacheManifest = [
     "url": "/static/media/roboto-latin-700italic.846d1890.woff"
   },
   {
-    "revision": "8c2ade503b34e31430d6c98aa29a52a3",
-    "url": "/static/media/roboto-latin-900.8c2ade50.woff"
-  },
-  {
     "revision": "7b770d6c53423deb1a8e49d3c9175184",
     "url": "/static/media/roboto-latin-900italic.7b770d6c.woff2"
+  },
+  {
+    "revision": "8c2ade503b34e31430d6c98aa29a52a3",
+    "url": "/static/media/roboto-latin-900.8c2ade50.woff"
   },
   {
     "revision": "bc833e725c137257c2c42a789845d82f",
     "url": "/static/media/roboto-latin-900italic.bc833e72.woff"
   },
   {
-    "revision": "1173dd9dcb9fd468cda3a3e491ad5e4f",
+    "revision": "9679b1aca3127fd0b4c00e7813606166",
     "url": "/index.html"
   }
 ];
