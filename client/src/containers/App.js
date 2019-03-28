@@ -30,7 +30,7 @@ class App extends Component {
       colors: ['rgb(200, 50, 20)', 'red']
     }
 
-    //history.replace('/');
+    history.replace('/');
   }
 
   componentDidMount = () => {
@@ -119,12 +119,10 @@ class App extends Component {
       );
     }
 
-    // return window.location.href = "https://quiet-castle-21882.herokuapp.com/api/login";
-
     return (
       <div className={styles.loginScreen}>
         <div>Please make sure you are running Spotify in background on any device.</div>
-        {/* <a className={styles.loginButton} href='http://localhost:5000/api/login' > Connect to Spotify </a> */}
+        {/* <a className={styles.loginButton} href='http://localhost:5000/api/login' > Continue </a> */}
         <a className={styles.loginButton} href='https://quiet-castle-21882.herokuapp.com/api/login' > Continue </a>
       </div>
     )

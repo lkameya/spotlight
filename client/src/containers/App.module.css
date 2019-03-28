@@ -9,7 +9,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 3rem;
+  font-size: 2rem;
+  font-weight: 300;
   font-family: 'Roboto', sans-serif;
   color: white;
   height: 100vh;
@@ -55,17 +56,16 @@
 }
 
 .loginButton {
-  position: absolute;
-  bottom: 15rem;
-  font-size: 3rem;
+  margin-top: 5rem;
+  font-size: 2rem;
   text-decoration: none;
   background-color: #1DB954;
   color: white;
-  padding: 2rem;
+  padding: 2rem 6rem;
   border-radius: 5rem;
 }
 
 .loginButton:hover {
-  transform: scale(1.1);
-  transition: all .3s;
+  transform: translateY(-.2rem);
+  transition: all .2s;
 }
