@@ -23,7 +23,7 @@ export const fetchCurrentSong = () => {
 
 export const fetchSongsFromPlaylist = () => {
   return async dispatch => {
-    try{
+    try {
       // const playlists = await spotifyApi.getUserPlaylists();
       // const playlistId = playlists.items[0].id;
       // const tracks = await spotifyApi.getPlaylistTracks(playlistId);
@@ -35,9 +35,9 @@ export const fetchSongsFromPlaylist = () => {
 
       const tracks = await spotifyApi.getPlaylistTracks(playlistId);
       const songs = tracks.items.map(song => song.track);
-      
-      dispatch({ type:  actionTypes.FETCH_SONGS_FROM_PLAYLIST, songs, playlistId });
-    } catch(error) {  
+
+      dispatch({ type: actionTypes.FETCH_SONGS_FROM_PLAYLIST, songs, playlistId });
+    } catch (error) {
       dispatch({ type: 'FETCH_ERROR', error });
     }
   }
@@ -45,7 +45,7 @@ export const fetchSongsFromPlaylist = () => {
 
 export const searchSong = term => {
   return async dispatch => {
-    if(term !== '') {
+    if (term !== '') {
       const result = await spotifyApi.searchTracks(term, { limit: 5 });
       dispatch({ type: actionTypes.FETCH_SONGS_SEARCH, songResults: result.tracks.items });
     } else {
@@ -56,8 +56,13 @@ export const searchSong = term => {
 
 export const addSongToPlaylist = song => {
   return async dispatch => {
-    const playlists = await spotifyApi.getUserPlaylists();
-    spotifyApi.addTracksToPlaylist(playlists.items[0].id, [song.uri]);
+
+    const track = await spotifyApi.getMyCurrentPlayingTrack();
+    const info = track.context.uri.split(':');
+    const playlistId = info[info.length - 1];
+
+    spotifyApi.addTracksToPlaylist(playlistId, [song.uri]);
+
     dispatch({ type: actionTypes.ADD_SONG_TO_PLAYLIST, newSong: song });
   }
 }
@@ -76,7 +81,7 @@ export const skipPrevious = () => {
 
 export const togglePlay = playing => {
   return async dispatch => {
-    if(playing)
+    if (playing)
       spotifyApi.pause();
     else
       spotifyApi.play();
