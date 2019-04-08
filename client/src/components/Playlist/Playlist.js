@@ -25,7 +25,6 @@ const Playlist = ({ playlist, currentSongId }) => {
                 title={song.name}
                 artist={song.artists[0].name}
                 albumImg={song.album.images[1].url}
-                isPlaying={currentSongId === song.id}
               />
             )
           })

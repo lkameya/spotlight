@@ -42,19 +42,7 @@ const Bounce = styled.div`
   animation: ${bounceKeyframes} 2s infinite;
 `;
 
-const PlaylistItem = ({ id, albumImg, artist, title, isPlaying }) => {
-  if (isPlaying) {
-    return (
-      <Bounce>
-        <PlaylistItemWrapper>
-          <AlbumImageWrapper id={id}>
-            <AlbumImage src={albumImg} alt="albumimg" />
-          </AlbumImageWrapper>
-          <LabelTrack> {artist} - {title} </LabelTrack>
-        </PlaylistItemWrapper>
-      </Bounce>
-    );
-  }
+const PlaylistItem = ({ id, albumImg, artist, title }) => {
   return (
     <PlaylistItemWrapper>
       <AlbumImageWrapper id={id}>
