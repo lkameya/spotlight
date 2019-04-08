@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components';
 
 const PlaylistItemWrapper = styled.div`
   position: relative;
-  animation: ${props => props.currentSong ? `${bounceKeyframes} 2s infinite` : null};
+  animation: ${props => props.currentSong ? `${bounceKeyframes} 2s infinite` : ''};
 `;
 
 const LabelTrack = styled.span`
