@@ -38,7 +38,7 @@ const PlaylistItem = ({ id, albumImg, artist, title }) => {
       {/* <AlbumImageWrapper id={id}>
         <AlbumImage src={albumImg} alt="albumimg" />
       </AlbumImageWrapper> */}
-      <LabelTrack> {artist} - {title} </LabelTrack>
+      {/* <LabelTrack> {artist} - {title} </LabelTrack> */}
     </PlaylistItemWrapper>
   )
 };
