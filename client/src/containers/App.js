@@ -84,7 +84,6 @@ class App extends Component {
     }
     this.state = {
       loggedIn: token ? true : false,
-      currentSongId: '',
       isPlaying: true
     }
 
@@ -115,10 +114,6 @@ class App extends Component {
   nowPlaying = () => {
     const currentSong = this.props.currentSong;
     if (!_.isEmpty(currentSong)) {
-      this.setState({
-        currentSongId: currentSong.id
-      });
-
       return (
         <>
           <div> {currentSong.artists[0].name} - {currentSong.name} </div>
@@ -164,7 +159,6 @@ class App extends Component {
             </Buttons>
             <Playlist
               playlist={this.props.playlist}
-              currentSongId
             />
           </Row>
         </AppContainer>
