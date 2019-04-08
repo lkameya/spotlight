@@ -1,10 +1,5 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
-
-const PlaylistItemWrapper = styled.div`
-  position: relative;
-  animation: ${props => (props.currentSong ? `${bounceKeyframes} 2s infinite` : "")};
-`;
+import styled, { css, keyframes } from 'styled-components';
 
 const LabelTrack = styled.span`
   opacity: 0;
@@ -37,6 +32,15 @@ const bounceKeyframes = keyframes`
   0%, 20%, 50%, 80%, 100% { transform: translateY(0); };
   40% { transform: translateY(-3rem); };
   60% { transform: translateY(-1.5rem); };
+`;
+
+const animation = css`
+  animation: ${bounceKeyframes} 2s infinite;
+`;
+
+const PlaylistItemWrapper = styled.div`
+  position: relative;
+  ${props => props.currentSong && animation}
 `;
 
 const PlaylistItem = ({ id, albumImg, artist, title, currentSong }) => {
