@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components';
 
 const PlaylistItemWrapper = styled.div`
   position: relative;
-  animation: ${props => props.currentSong ? `${bounceKeyframes} 2s infinite` : ''};
+  animation: ${props => (props.currentSong ? `${bounceKeyframes} 2s infinite` : "")};
 `;
 
 const LabelTrack = styled.span`
@@ -34,9 +34,9 @@ const AlbumImage = styled.img`
 `;
 
 const bounceKeyframes = keyframes`
-  0 %, 20 %, 50 %, 80 %, 100 % { transform: translateY(0); }
-  40 % { transform: translateY(-3rem); }
-  60 % { transform: translateY(-1.5rem); }
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-3rem); }
+  60% { transform: translateY(-1.5rem); }
 `;
 
 const PlaylistItem = ({ id, albumImg, artist, title, currentSong }) => {
