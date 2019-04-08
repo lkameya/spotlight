@@ -1,6 +1,44 @@
 import React, { useState } from 'react';
-import styles from './SearchBar.module.css';
+import styled from 'styled-components';
 import SearchButton from '../Icons/SearchButton/SearchButton';
+
+const SearchBarWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 18rem;
+
+  @media (max-width: 37.5em) {
+    margin-top: 10rem;
+  }
+`;
+
+const Input = styled.input`
+  color: #191414;
+  background-color: #f4f2f2;
+  font-size: 1.6rem;
+  border: none;
+  padding: 1rem 4rem;
+  border-radius: 10rem;
+  width: 35%;
+  transition: all .2s;
+  margin-right: -5rem;
+
+  &:focus {
+    outline: none;
+    width: 45%;
+    background-color: #f0eeee;
+  }
+
+  &::-web-kit-input-placeholder {
+    font-weight: 100;
+    color: #ccc;
+  }
+
+  &:focus + .button {
+    background-color: #f0eeee;
+  }
+`;
 
 const SearchBar = props => {
   const [term, setTerm] = useState('');
@@ -11,19 +49,17 @@ const SearchBar = props => {
   }
 
   return (
-    <div className={styles.searchBar}>
-      <input
+    <SearchBarWrapper>
+      <Input
         type="text"
-        className={styles.input}
         value={term}
         placeholder="Search an artist or song ..."
         onChange={event => onInputChange(event.target.value)}
       />
       <SearchButton />
-    </div>
-
+    </SearchBarWrapper>
   )
 }
 
-
 export default SearchBar;
+
