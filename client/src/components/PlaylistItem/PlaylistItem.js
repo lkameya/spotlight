@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const PlaylistItemWrapper = styled.div`
-  position: relative;
-`;
+// const PlaylistItemWrapper = styled.div`
+//   position: relative;
+// `;
 
 // const LabelTrack = styled.span`
 //   opacity: 0;
@@ -34,12 +34,12 @@ const PlaylistItemWrapper = styled.div`
 
 const PlaylistItem = ({ id, albumImg, artist, title }) => {
   return (
-    <PlaylistItemWrapper>
+    <div>
       {/* <AlbumImageWrapper id={id}>
         <AlbumImage src={albumImg} alt="albumimg" />
       </AlbumImageWrapper> */}
       {/* <LabelTrack> {artist} - {title} </LabelTrack> */}
-    </PlaylistItemWrapper>
+    </div>
   )
 };
 

@@ -34,10 +34,6 @@ const Input = styled.input`
     font-weight: 100;
     color: #ccc;
   }
-
-  &:focus + .button {
-    background-color: #f0eeee;
-  }
 `;
 
 const SearchBar = props => {
