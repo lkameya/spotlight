@@ -41,7 +41,7 @@ const bounceKeyframes = keyframes`
 
 const PlaylistItem = ({ id, albumImg, artist, title, currentSong }) => {
   return (
-    <PlaylistItemWrapper currentSong={currentSong.id === id}>
+    <PlaylistItemWrapper currentSong={currentSong && currentSong.id === id}>
       <AlbumImageWrapper id={id}>
         <AlbumImage src={albumImg} alt="albumimg" />
       </AlbumImageWrapper>
