@@ -32,7 +32,7 @@ const Row = styled.div`
 
 const NowPlaying = styled.div`
   display: flex;
-  flex-basis: 100 %;
+  flex-basis: 100%;
   justify-content: center;
   margin: 5rem;
   font-weight: 300;
@@ -53,7 +53,7 @@ const LoginScreen = styled.div`
   align-items: center;
   font-size: 2rem;
   font-weight: 300;
-  font-family: 'Roboto', sans - serif;
+  font-family: 'Roboto', sans-serif;
   color: white;
   height: 100vh;
 `;
