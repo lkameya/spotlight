@@ -30,22 +30,6 @@ const AlbumImage = styled.img`
   border-radius: 10rem;
   margin: 1rem .5rem;
   height: 10rem;
-
-  @media only screen and (max-width: 37.5em) {  
-    height: 8rem;
-  }    
-        
-  @media only screen and (max-width: 56.25em) { 
-    height: 8rem;
-  } 
-
-  @media only screen and (max-width: 75em) { 
-    height: 9rem;
-  } 
-
-  @media only screen and (max-width: 112.5em) {  
-    height: 10rem;
-  }
 `;
 
 const PlaylistItem = ({ id, albumImg, artist, title }) => {
@@ -54,9 +38,7 @@ const PlaylistItem = ({ id, albumImg, artist, title }) => {
       <AlbumImageWrapper id={id}>
         <AlbumImage src={albumImg} alt="albumimg" />
       </AlbumImageWrapper>
-      <LabelTrack>
-        {artist} - {title}
-      </LabelTrack>
+      <LabelTrack> {artist} - {title} </LabelTrack>
     </PlaylistItemWrapper>
   )
 };
