@@ -26,7 +26,7 @@ const AlbumImageWrapper = styled.div`
   }
 `;
 
-const AlbumImage = styled.image`
+const AlbumImage = styled.img`
   border-radius: 10rem;
   margin: 1rem .5rem;
   height: 10rem;
