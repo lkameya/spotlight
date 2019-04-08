@@ -11,7 +11,6 @@ import NextButton from '../components/Icons/NextButton/NextButton';
 import PreviousButton from '../components/Icons/PreviousButton/PreviousButton';
 import PlayButton from '../components/Icons/PlayButton/PlayButton';
 import history from '../history';
-import { Redirect } from 'react-router-dom';
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -39,8 +38,6 @@ class App extends Component {
       this.props.onFetchCurrentSong()
       this.playSong();
     }, 3000);
-
-    // document.body.style.backgroundImage = "radial-gradient(circle farthest-corner at 50% -70.6%,  rgb(200, 163, 200) -0%, rgb(7, 2, 7) 100.2%)";
   }
 
 
