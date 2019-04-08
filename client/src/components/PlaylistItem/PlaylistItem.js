@@ -15,11 +15,7 @@ const LabelTrack = styled.span`
   transform: translateX(-50%);
 `;
 
-const AlbumImage = styled.div`
-  border-radius: 10rem;
-  margin: 1rem .5rem;
-  height: 10rem;
-
+const AlbumImageWrapper = styled.div`
   &:hover + ${LabelTrack} {
     opacity: 1;
     position: absolute;
@@ -28,6 +24,12 @@ const AlbumImage = styled.div`
     transform: translate(-50%);
     transition: all .2s;
   }
+`;
+
+const AlbumImage = styled.image`
+  border-radius: 10rem;
+  margin: 1rem .5rem;
+  height: 10rem;
 
   @media only screen and (max-width: 37.5em) {  
     height: 8rem;
@@ -49,9 +51,9 @@ const AlbumImage = styled.div`
 const PlaylistItem = ({ id, albumImg, artist, title }) => {
   return (
     <PlaylistItemWrapper>
-      <AlbumImage id={id}>
-        <img src={albumImg} alt="albumimg" />
-      </AlbumImage>
+      <AlbumImageWrapper id={id}>
+        <AlbumImage src={albumImg} alt="albumimg" />
+      </AlbumImageWrapper>
       <LabelTrack>
         {artist} - {title}
       </LabelTrack>
