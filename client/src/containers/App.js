@@ -84,7 +84,8 @@ class App extends Component {
     }
     this.state = {
       loggedIn: token ? true : false,
-      currentSongId: ''
+      currentSongId: '',
+      isPlaying: true
     }
 
     history.replace('/');
@@ -125,6 +126,15 @@ class App extends Component {
       )
     } else {
       return null;
+    }
+  }
+
+  playSong = async song => {
+    const response = await spotifyApi.getMyCurrentPlaybackState();
+    if (response.is_playing) {
+      this.setState({ isPlaying: true });
+    } else {
+      this.setState({ isPlaying: false });
     }
   }
 
