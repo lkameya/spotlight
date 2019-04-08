@@ -5,7 +5,7 @@ import SearchBar from '../components/SearchBar/SearchBar';
 import SearchList from '../components/SearchList/SearchList';
 import Playlist from '../components/Playlist/Playlist';
 import _ from 'lodash';
-import styles from './App.module.css';
+import styled from 'styled-components';
 import * as actions from '../store/actions/index';
 import NextButton from '../components/Icons/NextButton/NextButton';
 import PreviousButton from '../components/Icons/PreviousButton/PreviousButton';
@@ -13,6 +13,65 @@ import PlayButton from '../components/Icons/PlayButton/PlayButton';
 import history from '../history';
 
 const spotifyApi = new SpotifyWebApi();
+
+const AppContainer = styled.div`
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+`;
+
+const Row = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #141919;
+`;
+
+const NowPlaying = styled.div`
+  display: flex;
+  flex-basis: 100 %;
+  justify-content: center;
+  margin: 5rem;
+  font-weight: 300;
+  font-size: 1.6rem;
+`;
+
+const Buttons = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+`;
+
+const LoginScreen = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 300;
+  font-family: 'Roboto', sans - serif;
+  color: white;
+  height: 100vh;
+`;
+
+const LoginButton = styled.a`
+  margin-top: 5rem;
+  font-size: 2rem;
+  text-decoration: none;
+  background-color: #1db954;
+  color: white;
+  padding: 1rem 6rem;
+  border-radius: 5rem;
+
+  &:hover {
+    transform: translateY(-.2rem);
+    transition: all .2s;
+  }
+`;
 
 class App extends Component {
   constructor() {
@@ -25,8 +84,7 @@ class App extends Component {
     }
     this.state = {
       loggedIn: token ? true : false,
-      isPlaying: true,
-      colors: ['rgb(200, 50, 20)', 'red']
+      currentSongId: ''
     }
 
     history.replace('/');
@@ -56,6 +114,10 @@ class App extends Component {
   nowPlaying = () => {
     const currentSong = this.props.currentSong;
     if (!_.isEmpty(currentSong)) {
+      this.setState({
+        currentSongId: currentSong.id
+      });
+
       return (
         <>
           <div> {currentSong.artists[0].name} - {currentSong.name} </div>
@@ -66,62 +128,45 @@ class App extends Component {
     }
   }
 
-  playSong = async song => {
-    const response = await spotifyApi.getMyCurrentPlaybackState();
-    if (response.is_playing) {
-      this.setState({ isPlaying: true });
-    } else {
-      this.setState({ isPlaying: false });
-    }
-  }
-
   render() {
     const trackSearch = _.debounce((term) => { this.props.onSearchSongs(term) }, 500);
-    let currentDiv = null;
-
-    if (this.props.currentSong) {
-      currentDiv = document.getElementById(this.props.currentSong.id);
-
-      this.props.playlist.map(item => {
-        if (item.id !== this.props.currentSong.id) {
-          const node = document.getElementById(item.id);
-          if (node)
-            node.classList.remove(styles.bounce);
-        }
-        return true;
-      });
-
-      if (currentDiv)
-        currentDiv.classList.add(styles.bounce);
-    }
 
     if (this.state.loggedIn) {
       return (
-        <div className={styles.app}>
+        <AppContainer>
           <SearchBar handleSearch={trackSearch} />
           <SearchList
             songs={this.props.searchList}
             addToPlay={this.props.onAddSongToPlaylist}
           />
-          <div className={styles.row}>
-            <div className={styles.nowPlaying}>{this.nowPlaying()}</div>
-            <div className={styles.buttons}>
+          <Row>
+            <NowPlaying>
+              {this.nowPlaying()}
+            </NowPlaying>
+            <Buttons>
               <PreviousButton clickPrevious={this.props.onPreviousSong} />
-              <PlayButton clickPrevious={this.props.onPreviousSong} isPlaying={this.state.isPlaying} playSong={() => this.props.onTogglePlay(this.state.isPlaying)} />
+              <PlayButton
+                clickPrevious={this.props.onPreviousSong}
+                isPlaying={this.state.isPlaying}
+                playSong={() => this.props.onTogglePlay(this.state.isPlaying)}
+              />
               <NextButton clickNext={this.props.onNextSong} />
-            </div>
-            <Playlist playlist={this.props.playlist} playSong={this.playSong} />
-          </div>
-        </div>
+            </Buttons>
+            <Playlist
+              playlist={this.props.playlist}
+              currentSongId
+            />
+          </Row>
+        </AppContainer>
       );
     }
 
     return (
-      <div className={styles.loginScreen}>
+      <LoginScreen>
         <div>Please make sure you are playing one of your playlists in Spotify on any device.</div>
         {/* <a className={styles.loginButton} href='http://localhost:5000/api/login' > Continue </a> */}
-        <a className={styles.loginButton} href='https://quiet-castle-21882.herokuapp.com/api/login' > Continue </a>
-      </div>
+        <LoginButton href='https://quiet-castle-21882.herokuapp.com/api/login'>Continue</LoginButton>
+      </LoginScreen>
     )
   }
 }

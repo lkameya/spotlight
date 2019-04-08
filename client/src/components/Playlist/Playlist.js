@@ -12,7 +12,7 @@ const PlaylistContainer = styled.div`
   padding-top: 5vh;
 `;
 
-const Playlist = ({ playlist }) => {
+const Playlist = ({ playlist, currentSongId }) => {
   if (playlist) {
     return (
       <PlaylistContainer>
@@ -25,6 +25,7 @@ const Playlist = ({ playlist }) => {
                 title={song.name}
                 artist={song.artists[0].name}
                 albumImg={song.album.images[1].url}
+                isPlaying={currentSongId === song.id}
               />
             )
           })

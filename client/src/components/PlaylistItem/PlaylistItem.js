@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const PlaylistItemWrapper = styled.div`
   position: relative;
@@ -32,7 +32,29 @@ const AlbumImage = styled.img`
   height: 10rem;
 `;
 
-const PlaylistItem = ({ id, albumImg, artist, title }) => {
+const bounceKeyframes = keyframes`
+  0 %, 20 %, 50 %, 80 %, 100 % { transform: translateY(0); }
+  40 % { transform: translateY(-3rem); }
+  60 % { transform: translateY(-1.5rem); }
+`;
+
+const Bounce = styled.div`
+  animation: ${bounceKeyframes} 2s infinite;
+`;
+
+const PlaylistItem = ({ id, albumImg, artist, title, isPlaying }) => {
+  if (isPlaying) {
+    return (
+      <Bounce>
+        <PlaylistItemWrapper>
+          <AlbumImageWrapper id={id}>
+            <AlbumImage src={albumImg} alt="albumimg" />
+          </AlbumImageWrapper>
+          <LabelTrack> {artist} - {title} </LabelTrack>
+        </PlaylistItemWrapper>
+      </Bounce>
+    );
+  }
   return (
     <PlaylistItemWrapper>
       <AlbumImageWrapper id={id}>
