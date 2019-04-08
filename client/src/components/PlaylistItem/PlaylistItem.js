@@ -35,9 +35,9 @@ const AlbumImage = styled.img`
 const PlaylistItem = ({ id, albumImg, artist, title }) => {
   return (
     <PlaylistItemWrapper>
-      <AlbumImageWrapper id={id}>
+      {/* <AlbumImageWrapper id={id}>
         <AlbumImage src={albumImg} alt="albumimg" />
-      </AlbumImageWrapper>
+      </AlbumImageWrapper> */}
       <LabelTrack> {artist} - {title} </LabelTrack>
     </PlaylistItemWrapper>
   )
