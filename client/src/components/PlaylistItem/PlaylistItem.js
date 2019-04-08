@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components';
 
 const PlaylistItemWrapper = styled.div`
   position: relative;
+  animation: ${props => props.currentSong ? `${bounceKeyframes} 2s infinite` : null};
 `;
 
 const LabelTrack = styled.span`
@@ -38,13 +39,9 @@ const bounceKeyframes = keyframes`
   60 % { transform: translateY(-1.5rem); }
 `;
 
-const Bounce = styled.div`
-  animation: ${bounceKeyframes} 2s infinite;
-`;
-
-const PlaylistItem = ({ id, albumImg, artist, title }) => {
+const PlaylistItem = ({ id, albumImg, artist, title, currentSong }) => {
   return (
-    <PlaylistItemWrapper>
+    <PlaylistItemWrapper currentSong={currentSong.id === id}>
       <AlbumImageWrapper id={id}>
         <AlbumImage src={albumImg} alt="albumimg" />
       </AlbumImageWrapper>
@@ -52,5 +49,6 @@ const PlaylistItem = ({ id, albumImg, artist, title }) => {
     </PlaylistItemWrapper>
   )
 };
+
 
 export default PlaylistItem;

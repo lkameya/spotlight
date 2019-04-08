@@ -135,6 +135,7 @@ class App extends Component {
 
   render() {
     const trackSearch = _.debounce((term) => { this.props.onSearchSongs(term) }, 500);
+    const currentSong = this.props.currentSong;
 
     if (this.state.loggedIn) {
       return (
@@ -159,6 +160,7 @@ class App extends Component {
             </Buttons>
             <Playlist
               playlist={this.props.playlist}
+              currentSong={currentSong || null}
             />
           </Row>
         </AppContainer>
