@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import SpotifyWebApi from 'spotify-web-api-js';
 import SearchBar from '../components/SearchBar/SearchBar';
 import SearchList from '../components/SearchList/SearchList';
-import Playlist from '../containers/Playlist/Playlist';
+import Playlist from '../components/Playlist/Playlist';
 import _ from 'lodash';
 import styles from './App.module.css';
 import * as actions from '../store/actions/index';
