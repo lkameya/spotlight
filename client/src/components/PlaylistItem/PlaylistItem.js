@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
+import PropTypes from 'prop-types';
 
 const LabelTrack = styled.span`
   opacity: 0;
@@ -54,5 +55,11 @@ const PlaylistItem = ({ id, albumImg, artist, title, currentSong }) => {
   )
 };
 
+PlaylistItem.propTypes = {
+  id: PropTypes.number,
+  albumImg: PropTypes.string,
+  artist: PropTypes.string,
+  title: PropTypes.string
+}
 
 export default PlaylistItem;

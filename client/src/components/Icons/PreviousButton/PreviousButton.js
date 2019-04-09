@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const PreviousButtonContainer = styled.div`
   &:hover {
@@ -23,6 +24,10 @@ const PreviousButton = ({ clickPrevious }) => (
     </svg>
   </PreviousButtonContainer>
 )
+
+PreviousButton.propTypes = {
+  clickPrevious: PropTypes.func.isRequired
+}
 
 export default PreviousButton;
 
