@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const PlaylistItemWrapper = styled.div`
   position: relative;
@@ -42,5 +43,12 @@ const PlaylistItem = ({ id, albumImg, artist, title }) => {
     </PlaylistItemWrapper>
   )
 };
+
+PlaylistItem.propTypes = {
+  id:       PropTypes.number,
+  albumImg: PropTypes.string,
+  artist:   PropTypes.string,
+  title:    PropTypes.string
+}
 
 export default PlaylistItem;

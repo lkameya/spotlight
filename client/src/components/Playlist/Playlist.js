@@ -1,6 +1,7 @@
 import React from 'react';
 import PlaylistItem from '../PlaylistItem/PlaylistItem';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const PlaylistContainer = styled.div`
   display: flex;
@@ -35,5 +36,9 @@ const Playlist = ({ playlist }) => {
 
   return null;
 }
+
+Playlist.propTypes = {
+  playlist: PropTypes.array
+};
 
 export default Playlist;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const SearchListContainer = styled.div`
   height: 25vh;
@@ -49,26 +50,33 @@ const ListItem = styled.li`
   margin: 1rem .5rem;
 `;
 
-const SearchList = ({ songs, addToPlay }) => (
-  <SearchListContainer>
-    <List>
-      {
-        songs.map(song => {
-          return (
-            <Song onClick={() => addToPlay(song)}>
-              <Image
-                src={song.album.images[1].url}
-                alt="albumimg"
-              />
-              <ListItem key={song.id}>
-                {song.name} - {song.artists[0].name}
-              </ListItem>
-            </Song>
-          );
-        })
-      }
-    </List>
-  </SearchListContainer>
-)
+const SearchList = ({ songs, addToPlay }) =>  {
+    return (
+      <SearchListContainer>
+        <List>
+          {
+            songs.map(song => {
+              return (
+                <Song onClick={() => addToPlay(song)}>
+                  <Image
+                    src={song.album.images[1].url}
+                    alt="albumimg"
+                  />
+                  <ListItem key={song.id}>
+                    {song.name} - {song.artists[0].name}
+                  </ListItem>
+                </Song>
+              );
+            })
+          }
+        </List>
+      </SearchListContainer>
+    )
+}
+
+SearchList.propTypes = {
+  songs: PropTypes.array,
+  addToPlay: PropTypes.func
+}
 
 export default SearchList;

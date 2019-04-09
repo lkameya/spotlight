@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import SearchButton from '../Icons/SearchButton/SearchButton';
+import PropTypes from 'prop-types';
 
 const SearchBarWrapper = styled.div`
   display: flex;
@@ -36,12 +37,12 @@ const Input = styled.input`
   }
 `;
 
-const SearchBar = props => {
+const SearchBar = ({ handleSearch }) => {
   const [term, setTerm] = useState('');
 
   const onInputChange = (term) => {
     setTerm(term);
-    props.handleSearch(term);
+    handleSearch(term);
   }
 
   return (
@@ -57,5 +58,8 @@ const SearchBar = props => {
   )
 }
 
-export default SearchBar;
+SearchBar.propTypes = {
+  handleSearch: PropTypes.func
+}
 
+export default SearchBar;

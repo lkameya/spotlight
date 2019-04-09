@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const PlayButtonContainer = styled.div`
   &:hover {
@@ -46,6 +47,11 @@ const PlayButton = ({ isPlaying, playSong }) => {
       </svg>
     </PlayButtonContainer>
   )
+}
+
+PlayButton.propTypes = {
+  isPlaying: PropTypes.bool,
+  playSong: PropTypes.func
 }
 
 export default PlayButton;
