@@ -1,11 +1,14 @@
 language: node_js
-
 node_js:
-  - stable
-
+- stable
 install:
-  - cd client
-  - npm install
-
+- cd client
+- npm install
 script:
-  - npm test
+- npm test
+deploy:
+  provider: heroku
+  api_key:
+    secure: BuBbvlrBc30hgXKU8sFTgiBzuj1JZOhSHqNwnKGpwBOqPds9hkKmkUNAozT4n2CZgRDMlpEitdOXZY+01gg1CgDeSwxcHJ/dFwgAwK2/a6akpf501rXmXTlSJxBqg32Z+BWDa9JSTMDCZM50ETNmo+YllkM8zXzxrmQv/TuSRcItJfc4PuK9eI1JluGOz5iy4lGnKz68zeW5mkPvMmVqwRewFu5nDaMWpV++ezIzf+ETF/bsBboGNFYCsW86HXsIXmlRPF+AjR0FFAgupvRD5TiFhFe96avRpwwRnKV7SeqlToHJfZw2ladyqi7Fz2d0cu1slyJmQCjUWuTp3AWBko7zNWHuM71vd9hUbFcZmLojy3MHdOrFNvowser19VZ1AfnfrDEHOx5jQCCHgzHaXnWu0x/zH2BGPMu1GNxju3AlKu4Z1XcOjM1RC229aTTSEMpxD+TCVPgJP5Fb/TAIwbme2ZDopTp22KG7BMOLZpy/DVH65rGvWD3Yz77idHNEOvtF2ae+7PA8ilX7hus8y2Q0DJZdMqINxZxEjW5ixhn+ZDj4MKMlO8fqbTLSmIV0JPhs772fS2Te/i4JLstzhNBoIsYxL2pqJtRXgxmFKSPJ/ACNHMdJt9TmCJ8DgYre+cLuNhXpj+24H/uw1txKlwnRGLU1WZg0xtfkGsIxNK0=
+  app:
+    master: quiet-castle-21882
