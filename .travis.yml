@@ -3,7 +3,7 @@ node_js:
 - stable
 install:
 - cd client
-- npm install
+- rm -f package-lock.json && npm install
 script:
 - npm test
 deploy:
