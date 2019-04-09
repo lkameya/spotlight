@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.org/rwieruch/react-components-test-setup.svg?branch=master)](https://travis-ci.org/lkameya/spotlight)
