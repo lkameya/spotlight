@@ -4,7 +4,8 @@ node_js:
   - stable
 
 install:
+  - cd client
   - npm install
 
 script:
-  - npm run test:unit
+  - npm test
