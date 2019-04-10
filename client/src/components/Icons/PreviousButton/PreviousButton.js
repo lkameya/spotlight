@@ -26,7 +26,7 @@ const PreviousButton = ({ clickPrevious }) => (
 )
 
 PreviousButton.propTypes = {
-  clickPrevious: PropTypes.func.isRequired
+  clickPrevious: PropTypes.func
 }
 
 export default PreviousButton;

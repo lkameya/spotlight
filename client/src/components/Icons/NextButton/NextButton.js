@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const NextButtonContainer = styled.div`
   &:hover {
     fill: #1DB954;
-    cursor: none;
+    cursor: pointer;
     transition: all .1s;
   }
 `;
@@ -26,7 +26,7 @@ const NextButton = ({ clickNext }) => (
 )
 
 NextButton.propTypes = {
-  clickNext: PropTypes.func.isRequired
+  clickNext: PropTypes.func
 }
 
 export default NextButton;
