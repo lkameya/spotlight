@@ -56,7 +56,7 @@ const PlaylistItem = ({ id, albumImg, artist, title, currentSong }) => {
 };
 
 PlaylistItem.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.string,
   albumImg: PropTypes.string,
   artist: PropTypes.string,
   title: PropTypes.string
