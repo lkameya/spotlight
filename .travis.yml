@@ -1,10 +1,11 @@
 language: node_js
 node_js:
 - stable
-cache:
-  directories:
-    - client/node_modules
+install:
+- cd client
+- npm install
 script:
+- git checkout package-lock.json
 - npm test
 deploy:
   provider: heroku
