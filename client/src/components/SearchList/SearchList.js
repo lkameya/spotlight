@@ -46,6 +46,7 @@ const Image = styled.img`
   }
 `;
 
+
 const ListItem = styled.li`
   margin: 1rem .5rem;
 `;
