@@ -14,12 +14,15 @@
     "querystring": "^0.2.0",
     "request": "^2.88.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "coveralls": "^3.0.3"
+  },
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
   },
   "author": "",
   "license": "ISC"

@@ -6,7 +6,7 @@ install:
 - npm install
 script:
 - git checkout package-lock.json
-- npm test
+- npm test -- --coverage
 deploy:
   provider: heroku
   api_key:
