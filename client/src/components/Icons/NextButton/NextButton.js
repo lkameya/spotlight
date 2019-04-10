@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const NextButtonContainer = styled.div`
   &:hover {
     fill: #1DB954;
-    cursor: pointer;
+    cursor: none;
     transition: all .1s;
   }
 `;
