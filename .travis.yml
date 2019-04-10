@@ -4,6 +4,7 @@ node_js:
 install:
 - cd client
 - npm install
+- npm run build
 script:
 - git checkout package-lock.json
 - npm test
