@@ -6,9 +6,9 @@ install:
 - npm install
 script:
 - git checkout package-lock.json
-- npm test -- --coverage
+- npm run test -- --coverage
 after_script:
-  - COVERALLS_REPO_TOKEN=$coveralls_repo_token npm run coveralls
+- COVERALLS_REPO_TOKEN=$coveralls_repo_token npm run coveralls
 deploy:
   provider: heroku
   api_key:
