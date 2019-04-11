@@ -2,14 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
 import "typeface-roboto";
 import { BrowserRouter } from 'react-router-dom';
 
 import App from './containers/App';
-import reducers from './store/reducers';
+import reducers from './ducks/reducers';
+import songSaga from './sagas/sagas';
 
-const store = createStore(reducers, applyMiddleware(thunk));
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(reducers, applyMiddleware(sagaMiddleware));
+
+sagaMiddleware.run(songSaga);
 
 ReactDOM.render(
   <Provider store={store}>

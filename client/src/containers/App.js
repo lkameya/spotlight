@@ -6,11 +6,12 @@ import SearchList from '../components/SearchList/SearchList';
 import Playlist from '../components/Playlist/Playlist';
 import _ from 'lodash';
 import styled from 'styled-components';
-import * as actions from '../store/actions/index';
+import { actions as songsActions } from '../ducks/songs';
 import NextButton from '../components/Icons/NextButton/NextButton';
 import PreviousButton from '../components/Icons/PreviousButton/PreviousButton';
 import PlayButton from '../components/Icons/PlayButton/PlayButton';
 import history from '../history';
+import { bindActionCreators } from 'redux';
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -91,9 +92,9 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    this.props.onFetchUserPlaylist();
+    this.props.fetchSongsFromPlaylist();
     this.timer = setInterval(() => {
-      this.props.onFetchCurrentSong()
+      this.props.fetchCurrentSong()
       this.playSong();
     }, 3000);
   }
@@ -134,7 +135,7 @@ class App extends Component {
   }
 
   render() {
-    const trackSearch = _.debounce((term) => { this.props.onSearchSongs(term) }, 500);
+    const trackSearch = _.debounce((term) => { this.props.searchSongs(term) }, 500);
     const currentSong = this.props.currentSong;
 
     if (this.state.loggedIn) {
@@ -143,20 +144,19 @@ class App extends Component {
           <SearchBar handleSearch={trackSearch} />
           <SearchList
             songs={this.props.searchList}
-            addToPlay={this.props.onAddSongToPlaylist}
+            addToPlay={this.props.addSongToPlaylist}
           />
           <Row>
             <NowPlaying>
               {this.nowPlaying()}
             </NowPlaying>
             <Buttons>
-              <PreviousButton clickPrevious={this.props.onPreviousSong} />
+              <PreviousButton clickPrevious={this.props.skipPrevious} />
               <PlayButton
-                clickPrevious={this.props.onPreviousSong}
                 isPlaying={this.state.isPlaying}
-                playSong={() => this.props.onTogglePlay(this.state.isPlaying)}
+                playSong={() => this.props.togglePlay(this.state.isPlaying)}
               />
-              <NextButton clickNext={this.props.onNextSong} />
+              <NextButton clickNext={this.props.skipNext} />
             </Buttons>
             <Playlist
               playlist={this.props.playlist}
@@ -170,7 +170,7 @@ class App extends Component {
     return (
       <LoginScreen>
         <div>Please make sure you are playing one of your playlists in Spotify on any device</div>
-        {/* <a className={styles.loginButton} href='http://localhost:5000/api/login' > Continue </a> */}
+        {/* <LoginButton href='http://localhost:5000/api/login'>Continue</LoginButton> */}
         <LoginButton href='https://quiet-castle-21882.herokuapp.com/api/login'>Continue</LoginButton>
       </LoginScreen>
     )
@@ -187,15 +187,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    onFetchCurrentSong: () => dispatch(actions.fetchCurrentSong()),
-    onFetchUserPlaylist: () => dispatch(actions.fetchSongsFromPlaylist()),
-    onSearchSongs: (term) => dispatch(actions.searchSong(term)),
-    onAddSongToPlaylist: (song) => dispatch(actions.addSongToPlaylist(song)),
-    onNextSong: () => dispatch(actions.skipNext()),
-    onPreviousSong: () => dispatch(actions.skipPrevious()),
-    onTogglePlay: (playing) => dispatch(actions.togglePlay(playing))
-  }
+  return bindActionCreators({ ...songsActions }, dispatch);
 }
 
 export default connect(
