@@ -31,23 +31,23 @@ export default (state = initialState, action) => {
         ...state,
         currentSong: action.currentSong
       };
-      case types.FETCH_SONGS_SEARCH_SUCCEEDED:
+    case types.FETCH_SONGS_SEARCH_SUCCEEDED:
       return {
         ...state,
         searchList: action.songResults
       };
-      case types.CLEAR_SEARCH:
+    case types.CLEAR_SEARCH:
       return {
         ...state,
         searchList: []
       };
-      case types.FETCH_SONGS_FROM_PLAYLIST_SUCCEEDED:
+    case types.FETCH_SONGS_FROM_PLAYLIST_SUCCEEDED:
       return {
         ...state,
         playlist: action.songs,
         playlistId: action.playlistId
       }
-      case types.ADD_SONG_TO_PLAYLIST_SUCCEEDED:
+    case types.ADD_SONG_TO_PLAYLIST_SUCCEEDED:
       return {
         ...state,
         playlist: [...state.playlist, action.newSong]
@@ -58,16 +58,11 @@ export default (state = initialState, action) => {
 }
 
 export const actionCreators = {
-  //front
   fetchCurrentSong: () => ({ type: types.FETCH_CURRENT_SONG }),
   fetchSongsFromPlaylist: () => ({ type: types.FETCH_SONGS_FROM_PLAYLIST }),
-  searchSongs: (term) => ({ type: types.FETCH_SONGS_SEARCH, term}),
-  addSongToPlaylist: (song) => ({ type: types.ADD_SONG_TO_PLAYLIST, song}),
+  searchSongs: (term) => ({ type: types.FETCH_SONGS_SEARCH, term }),
+  addSongToPlaylist: (song) => ({ type: types.ADD_SONG_TO_PLAYLIST, song }),
   skipNext: () => ({ type: types.SKIP_NEXT }),
   skipPrevious: () => ({ type: types.SKIP_PREVIOUS }),
   togglePlay: playing => ({ type: types.TOGGLE_PLAY, playing }),
-
-
-  // saga
-
 }
