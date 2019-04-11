@@ -6,7 +6,7 @@ import SearchList from '../components/SearchList/SearchList';
 import Playlist from '../components/Playlist/Playlist';
 import _ from 'lodash';
 import styled from 'styled-components';
-import { actions as songsActions } from '../ducks/songs';
+import { actionCreators as songsActions } from '../ducks/songs';
 import NextButton from '../components/Icons/NextButton/NextButton';
 import PreviousButton from '../components/Icons/PreviousButton/PreviousButton';
 import PlayButton from '../components/Icons/PlayButton/PlayButton';

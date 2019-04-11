@@ -30,19 +30,19 @@ function* fetchSongsFromPlaylist() {
 
 function* fetchSongsSearch(action) {
   try {
-    if(action.term !== '') {
+    if (action.term !== '') {
       const result = yield call([spotifyApi, 'searchTracks'], action.term, { limit: 5 });
       yield put({ type: songTypes.FETCH_SONGS_SEARCH_SUCCEEDED, songResults: result.tracks.items });
     } else {
       yield put({ type: songTypes.CLEAR_SEARCH });
     }
-  } catch(error) {
-      yield put({ type: songTypes.FETCH_SONGS_SEARCH_FAILED, message: error.message });
+  } catch (error) {
+    yield put({ type: songTypes.FETCH_SONGS_SEARCH_FAILED, message: error.message });
   }
 }
 
 function* addSongToPlaylist(song) {
-  try{
+  try {
     const track = yield call([spotifyApi, 'getMyCurrentPlayingTrack']);
     const info = track.context.uri.split(':');
     const playlistId = info[info.length - 1];
@@ -50,7 +50,7 @@ function* addSongToPlaylist(song) {
     yield call([spotifyApi, 'addTracksToPlaylist'], playlistId, [song.uri]);
 
     yield put({ type: songTypes.ADD_SONG_TO_PLAYLIST_SUCCEEDED, newSong: song });
-  } catch(error) {
+  } catch (error) {
     yield put({ type: songTypes.ADD_SONG_TO_PLAYLIST_FAILED, newSong: song });
   }
 }
@@ -58,7 +58,7 @@ function* addSongToPlaylist(song) {
 function* skipNext() {
   try {
     yield call([spotifyApi, 'skipToNext']);
-  } catch(error) {
+  } catch (error) {
     yield null;
   }
 }
@@ -66,18 +66,18 @@ function* skipNext() {
 function* skipPrevious() {
   try {
     yield call([spotifyApi, 'skipPrevious']);
-  } catch(error) {
+  } catch (error) {
     yield null;
   }
 }
 
 function* togglePlay(playing) {
   try {
-    if(playing)
+    if (playing)
       yield call([spotifyApi, 'pause']);
     else
       yield call([spotifyApi, 'play']);
-  } catch(error) {
+  } catch (error) {
     yield null;
   }
 }
@@ -86,7 +86,7 @@ const songSaga = [
   takeEvery(songTypes.FETCH_CURRENT_SONG, fetchSong),
   takeEvery(songTypes.FETCH_SONGS_FROM_PLAYLIST, fetchSongsFromPlaylist),
   takeEvery(songTypes.FETCH_SONGS_SEARCH, fetchSongsSearch),
-  takeEvery(songTypes.FETCH_SONGS_SEARCH, addSongToPlaylist),
+  takeEvery(songTypes.ADD_SONG_TO_PLAYLIST, addSongToPlaylist),
   takeEvery(songTypes.SKIP_NEXT, skipNext),
   takeEvery(songTypes.SKIP_PREVIOUS, skipPrevious),
   takeEvery(songTypes.TOGGLE_PLAY, togglePlay),

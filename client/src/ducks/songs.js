@@ -57,18 +57,17 @@ export default (state = initialState, action) => {
   }
 }
 
-export const actions = {
+export const actionCreators = {
+  //front
   fetchCurrentSong: () => ({ type: types.FETCH_CURRENT_SONG }),
   fetchSongsFromPlaylist: () => ({ type: types.FETCH_SONGS_FROM_PLAYLIST }),
   searchSongs: (term) => ({ type: types.FETCH_SONGS_SEARCH, term}),
   addSongToPlaylist: (song) => ({ type: types.ADD_SONG_TO_PLAYLIST, song}),
   skipNext: () => ({ type: types.SKIP_NEXT }),
   skipPrevious: () => ({ type: types.SKIP_PREVIOUS }),
-  togglePlay: playing => ({ type: types.TOGGLE_PLAY, playing })
-}
+  togglePlay: playing => ({ type: types.TOGGLE_PLAY, playing }),
 
-//   onSearchSongs: (term) => dispatch(actions.searchSong(term)),
-  //   onAddSongToPlaylist: (song) => dispatch(actions.addSongToPlaylist(song)),
-  //   onNextSong: () => dispatch(actions.skipNext()),
-  //   onPreviousSong: () => dispatch(actions.skipPrevious()),
-  //   onTogglePlay: (playing) => dispatch(actions.togglePlay(playing))
+
+  // saga
+
+}
