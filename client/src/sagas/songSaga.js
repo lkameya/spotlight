@@ -43,10 +43,9 @@ function* fetchSongsSearch(action) {
 
 function* addSongToPlaylist(song) {
   try {
-    const track = yield call([spotifyApi, 'getMyCurrentPlayingTrack']);
+    const track = yield call(spotifyApi.getMyCurrentPlayingTrack);
     const info = track.context.uri.split(':');
     const playlistId = info[info.length - 1];
-
     yield call([spotifyApi, 'addTracksToPlaylist'], playlistId, [song.uri]);
 
     yield put({ type: songTypes.ADD_SONG_TO_PLAYLIST_SUCCEEDED, newSong: song });
