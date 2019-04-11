@@ -3,6 +3,7 @@ import PlaylistItem from '../PlaylistItem/PlaylistItem';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+
 const PlaylistContainer = styled.div`
   display: flex;
   overflow-x: scroll;
