@@ -28,10 +28,10 @@ function* fetchSongsFromPlaylist() {
   }
 }
 
-function* fetchSongsSearch(action) {
+function* fetchSongsSearch({ term }) {
   try {
-    if (action.term !== '') {
-      const result = yield call([spotifyApi, 'searchTracks'], action.term, { limit: 5 });
+    if (term !== '') {
+      const result = yield call([spotifyApi, 'searchTracks'], term, { limit: 5 });
       yield put({ type: songTypes.FETCH_SONGS_SEARCH_SUCCEEDED, songResults: result.tracks.items });
     } else {
       yield put({ type: songTypes.CLEAR_SEARCH });
@@ -41,7 +41,7 @@ function* fetchSongsSearch(action) {
   }
 }
 
-function* addSongToPlaylist(song) {
+function* addSongToPlaylist({ song }) {
   try {
     const track = yield call(spotifyApi.getMyCurrentPlayingTrack);
     const info = track.context.uri.split(':');
@@ -70,7 +70,7 @@ function* skipPrevious() {
   }
 }
 
-function* togglePlay(playing) {
+function* togglePlay({ playing }) {
   try {
     if (playing)
       yield call([spotifyApi, 'pause']);
