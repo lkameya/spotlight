@@ -3,9 +3,9 @@ import { types as songTypes } from '../ducks/songs';
 
 import SpotifyWebApi from 'spotify-web-api-js';
 
-const spotifyApi = new SpotifyWebApi();
+export const spotifyApi = new SpotifyWebApi();
 
-function* fetchSong() {
+export function* fetchSong() {
   try {
     const response = yield call(spotifyApi.getMyCurrentPlaybackState);
     yield put({ type: songTypes.FETCH_CURRENT_SONG_SUCCEEDED, currentSong: response.item });
@@ -14,7 +14,7 @@ function* fetchSong() {
   }
 }
 
-function* fetchSongsFromPlaylist() {
+export function* fetchSongsFromPlaylist() {
   try {
     const track = yield call(spotifyApi.getMyCurrentPlayingTrack);
     const info = track.context.uri.split(':');
