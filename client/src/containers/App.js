@@ -171,7 +171,7 @@ class App extends Component {
       <LoginScreen>
         <div>Please make sure you are playing one of your playlists in Spotify on any device</div>
         {/* <LoginButton href='http://localhost:5000/api/login'>Continue</LoginButton> */}
-        <LoginButton href='https://quiet-castle-21882.herokuapp.com/api/login'>Continue</LoginButton>
+        <LoginButton href='http://sagaplaylist.com/api/login'>Continue</LoginButton>
       </LoginScreen>
     )
   }
