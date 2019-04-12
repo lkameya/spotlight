@@ -7,6 +7,7 @@ import Playlist from '../components/Playlist/Playlist';
 import _ from 'lodash';
 import styled from 'styled-components';
 import { actionCreators as songsActions } from '../ducks/songs';
+import Logo from '../components/Icons/Logo/Logo';
 import NextButton from '../components/Icons/NextButton/NextButton';
 import PreviousButton from '../components/Icons/PreviousButton/PreviousButton';
 import PlayButton from '../components/Icons/PlayButton/PlayButton';
@@ -141,6 +142,7 @@ class App extends Component {
     if (this.state.loggedIn) {
       return (
         <AppContainer>
+          <Logo />
           <SearchBar handleSearch={trackSearch} />
           <SearchList
             songs={this.props.searchList}
