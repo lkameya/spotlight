@@ -5,6 +5,8 @@ const LogoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  transform: scale(0.5);
+  margin-top: 5rem;
 `;
 
 const Logo = () => (

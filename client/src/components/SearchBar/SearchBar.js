@@ -7,7 +7,7 @@ const SearchBarWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 18rem;
+  margin-top: 5rem;
 
   @media (max-width: 37.5em) {
     margin-top: 10rem;
