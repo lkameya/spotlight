@@ -5,5 +5,5 @@ A custom Spotify Playlist manager.
 * **Fast:** You can search songs and add to your playlist in one click.
 * **Easy:** Sometimes you just want to build your playlist in Spotify without browsing other songs or playlists.
 
-[Spotlight Web](https://quiet-castle-21882.herokuapp.com/).
+[www.sagaplaylist.com](http://sagaplaylist.com/).
 
