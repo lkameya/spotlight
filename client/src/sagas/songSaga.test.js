@@ -1,6 +1,7 @@
 import { testSaga } from 'redux-saga-test-plan';
 import { fetchSong, fetchSongsFromPlaylist, spotifyApi } from './songSaga';
 import { types as songTypes } from '../ducks/songs';
+import * as apiMocks from '../mocks/spotifyApi';
 
 const responseSuccess = {
   response: {
@@ -33,21 +34,14 @@ describe('SAGAS', () => {
 
   // describe('fetchSongsFromPlaylist', () => {
   //   it('dispatch a list of songs when fetch succeed', () => {
-  //     const songs = [{
-  //       album: {
-  //         artists: [{
-  //           uri: 'teste'
-  //         }]
-  //       }
-  //     }];
-  //     const playlistId = 1;
+
   //     testSaga(fetchSongsFromPlaylist)
   //       .next()
   //       .call(spotifyApi.getMyCurrentPlayingTrack)
-  //       .next(playlistId)
+  //       .next(apiMocks.getMyCurrentPlayingTrackResponse)
   //       .call(spotifyApi.getPlaylistTracks)
-  //       .next(songs, playlistId)
-  //       .put({ type: songTypes.FETCH_SONGS_FROM_PLAYLIST_SUCCEEDED, songs, playlistId })
+  //       .next(apiMocks.getPlaylistTracksResponse)
+  //       .put({ type: songTypes.FETCH_SONGS_FROM_PLAYLIST_SUCCEEDED })
   //       .next()
   //       .isDone();
   //   });
@@ -62,5 +56,5 @@ describe('SAGAS', () => {
   //     .next()
   //     .isDone();
   //});
-  //});
+  // });
 });

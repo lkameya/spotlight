@@ -14,7 +14,7 @@ const SearchBarWrapper = styled.div`
   }
 `;
 
-const Input = styled.input`
+export const Input = styled.input`
   color: #191414;
   background-color: #f4f2f2;
   font-size: 1.6rem;

@@ -12,7 +12,7 @@ const LabelTrack = styled.span`
   transform: translateX(-50%);
 `;
 
-const AlbumImageWrapper = styled.div`
+export const AlbumImageWrapper = styled.div`
   &:hover + ${LabelTrack} {
     opacity: 1;
     position: absolute;

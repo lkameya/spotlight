@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search List renders correctly 1`] = `
+.c0 {
+  height: 25vh;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  list-style: none;
+  font-size: 1.2rem;
+  margin-top: 5rem;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 15rem;
+  text-align: center;
+}
+
+.c2:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-transition: .2s all;
+  transition: .2s all;
+}
+
+.c2:active {
+  -webkit-transform: translateY(-1rem);
+  -ms-transform: translateY(-1rem);
+  transform: translateY(-1rem);
+}
+
+.c3 {
+  border-radius: 15rem;
+  margin-bottom: .5rem;
+  height: 8rem;
+}
+
+.c4 {
+  margin: 1rem .5rem;
+}
+
+@media only screen and (max-width:37.5em) {
+  .c1 {
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+}
+
+@media only screen and (max-width:37.5em) {
+  .c3 {
+    height: 6rem;
+  }
+}
+
+<div
+  className="c0"
+>
+  <ul
+    className="c1"
+  >
+    <div
+      className="c2"
+      onClick={[Function]}
+    >
+      <img
+        alt="albumimg"
+        className="c3"
+        src="Teste"
+      />
+      <li
+        className="c4"
+      >
+         - 
+        SOAD
+      </li>
+    </div>
+  </ul>
+</div>
+`;
