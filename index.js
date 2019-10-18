@@ -7,7 +7,7 @@ const config = require('./config/keys');
 
 const client_id = config.spotifyClientID; // Your client id
 const client_secret = config.spotifyClientSecret; // Your secret
-const redirect_uri = 'https://www.sagaplaylist.com/api/callback'; // Your redirect uri
+const redirect_uri = 'http://www.sagaplaylist.com/api/callback'; // Your redirect uri
 // const redirect_uri = 'http://localhost:5000/api/callback'; // Your redirect uri
 /**
  * Generates a random string containing numbers and letters
