@@ -1,5 +1,5 @@
 FROM smebberson/nodejs
-COPY ./client/build /app 
-RUN chmod -R 777 /app
+COPY . /app
+WORKDIR /app 
 RUN ls
-RUN node ./index.js
+RUN node index.js
