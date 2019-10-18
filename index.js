@@ -7,7 +7,7 @@ const config = require('./config/keys');
 
 const client_id = config.spotifyClientID; // Your client id
 const client_secret = config.spotifyClientSecret; // Your secret
-const redirect_uri = 'https://www.sagaplaylist.lkameya.com/api/callback'; // Your redirect uri
+const redirect_uri = 'https://www.sagaplaylist.com/api/callback'; // Your redirect uri
 // const redirect_uri = 'http://localhost:5000/api/callback'; // Your redirect uri
 /**
  * Generates a random string containing numbers and letters
@@ -100,7 +100,7 @@ app.get('/api/callback', function (req, res) {
 
         // we can also pass the token to the browser to make requests from there
         // res.redirect('http://localhost:3000/#' +
-        res.redirect('https://www.sagaplaylist.lkameya.com/#' +
+        res.redirect('https://www.sagaplaylist.com/#' +
           querystring.stringify({
             access_token: access_token,
             refresh_token: refresh_token,
