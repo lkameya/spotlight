@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
+  "imageName": "smebberson/nodejs",
   "dockerfileLines": [
-    "FROM smebberson/nodejst", 
     "COPY ./client/build /app", 
     "RUN chmod -R 777 /app",
     "RUN node index.js"
