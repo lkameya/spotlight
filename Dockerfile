@@ -1,4 +1,4 @@
-FROM smebberson/nodejs
+FROM finizco/nginx-node:latest
 COPY . /app
 WORKDIR /app 
 EXPOSE 80
