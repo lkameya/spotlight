@@ -33,6 +33,7 @@ app.use(express.static('client/build'))
 
 
 app.get('/api/login', function (req, res) {
+  console.log(redirect_uri);
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
   var scope = 'user-read-private user-read-email user-read-playback-state playlist-modify-private playlist-modify-public user-modify-playback-state';
