@@ -7,8 +7,7 @@ const config = require('./config/keys');
 
 const client_id = config.spotifyClientID; // Your client id
 const client_secret = config.spotifyClientSecret; // Your secret
-// const redirect_uri = 'https://www.sagaplaylist.lkameya.com/api/callback'; // Your redirect uri
-const redirect_uri = 'http://localhost:5000/api/callback'; // Your redirect uri
+const redirect_uri = config.baseURL + '/api/callback'; // Your redirect uri
 /**
  * Generates a random string containing numbers and letters
  * @param  {number} length The length of the string
@@ -36,8 +35,6 @@ app.use(express.static('client/build'))
 app.get('/api/login', function (req, res) {
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
-
-  // your application requests authorization
   var scope = 'user-read-private user-read-email user-read-playback-state playlist-modify-private playlist-modify-public user-modify-playback-state';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
@@ -50,9 +47,6 @@ app.get('/api/login', function (req, res) {
 });
 
 app.get('/api/callback', function (req, res) {
-
-  // your application requests refresh and access tokens
-  // after checking the state parameter
 
   var code = req.query.code || null;
   var state = req.query.state || null;
@@ -101,8 +95,7 @@ app.get('/api/callback', function (req, res) {
         });
 
         // we can also pass the token to the browser to make requests from there
-        res.redirect('http://localhost:3000/#' +
-          // res.redirect('https://www.sagaplaylist.lkameya.com/#' +
+          res.redirect('https://www.sagaplaylist.lkameya.com/#' +
           querystring.stringify({
             access_token: access_token,
             refresh_token: refresh_token,
