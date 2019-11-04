@@ -96,7 +96,7 @@ app.get('/api/callback', function (req, res) {
         });
 
         // we can also pass the token to the browser to make requests from there
-          res.redirect('https://www.sagaplaylist.lkameya.com/#' +
+          res.redirect('https://sagaplaylist.lkameya.com/#' +
           querystring.stringify({
             access_token: access_token,
             refresh_token: refresh_token,
