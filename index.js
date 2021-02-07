@@ -27,10 +27,7 @@ var stateKey = 'spotify_auth_state';
 
 var app = express();
 
-app.use(express.static('client/build'))
-  .use(cors())
-  .use(cookieParser());;
-
+app.use(cors());
 
 app.get('/api/login', function (req, res) {
   console.log(redirect_uri);
@@ -53,9 +50,6 @@ app.get('/api/callback', function (req, res) {
   var state = req.query.state || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
 
-  console.log("CODE" + code);
-  console.log("STATE" + state);
-
   if (state === null || state !== storedState) {
     res.redirect('/#' +
       querystring.stringify({
@@ -75,7 +69,6 @@ app.get('/api/callback', function (req, res) {
       },
       json: true
     };
-    console.log("prepost");
     request.post(authOptions, function (error, response, body) {
       console.log(authOptions);
       console.log(error);
@@ -90,12 +83,9 @@ app.get('/api/callback', function (req, res) {
           json: true
         };
 
-        // use the access token to access the Spotify Web API
         request.get(options, function (error, response, body) {
-
         });
 
-        // we can also pass the token to the browser to make requests from there
           res.redirect('https://sagaplaylist.lkameya.com/#' +
           querystring.stringify({
             access_token: access_token,
@@ -112,8 +102,6 @@ app.get('/api/callback', function (req, res) {
 });
 
 app.get('/api/refresh_token', function (req, res) {
-
-  // requesting access token from refresh token
   var refresh_token = req.query.refresh_token;
   var authOptions = {
     url: 'https://accounts.spotify.com/api/token',
@@ -135,12 +123,5 @@ app.get('/api/refresh_token', function (req, res) {
   });
 });
 
-const path = require('path');
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-})
-
 const PORT = process.env.PORT || 5000;
-
-console.log('Listening on 5000');
 app.listen(PORT);

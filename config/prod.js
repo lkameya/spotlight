@@ -1,5 +1,5 @@
 module.exports = {
   spotifyClientID: process.env.SPOTIFY_CLIENT_ID,
-  spotifyClientSecret: process.env.SPOTIFY_CLIENT_SECRET, // Your secret
+  spotifyClientSecret: process.env.SPOTIFY_CLIENT_SECRET, 
   baseURL: 'https://sagaplaylist.lkameya.com'
 }
